@@ -38,4 +38,4 @@ Jacek Galowicz obtained his master of science in electrical engineering/computer
 ## 本书相关
 
 - github 翻译地址：https://github.com/xiaoweiChen/CPP-17-STL-cookbook
-- gitbook 在线阅读：
+- gitbook 在线阅读：https://www.gitbook.com/book/chenxiaowei/c-17-stl-cook-book
