@@ -15,7 +15,7 @@ C++17 STL Cook book
 
 作为对《C++17 STL Cook book》的中文翻译。
 
-C++已经出道很久了，并且在各种领域都有涉及。人们使用其快捷、高效和灵活的特点解决了很多问题。C++将要到来的新版本，势必会让编程者改变其编程的方式。如果你想要掌握更加高明的编程方式或是想要代码可无死角移植，那么熟练使用C++17 STL是你必须要掌握的。选择本书旨在帮助你了解C++17 STL，并通过实例掌握其使用方式。
+C++已经出道很久了，在各种领域都有所使用。其快捷、高效和灵活的特点，帮助人们解决了很多问题。C++将要到来的新版本，势必会改变编程者的编程习惯。如果你想要掌握更加高明的编程方式或是代码可轻松移植，那么你必须熟练使用C++17 STL。本书会通过实际例子帮助你了解C++17 STL，并掌握其使用方法。
 
 Beginning with new language features, this book will help you understand the language's mechanics and library features, and offers insight into how they work. Unlike other books, ours takes an implementation-specific, problem-solution approach that will help you quickly overcome hurdles. You will learn the core STL concepts, such as containers, algorithms, utility classes, lambda expressions, iterators, and more, while working on practical real-world recipes. These recipes will help you get the most from the STL and show you how to program in a better way.
 
