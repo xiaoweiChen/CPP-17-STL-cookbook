@@ -1,6 +1,6 @@
 C++17 STL Cook book
 =========================
-*挖掘函数式编程和Lambda表达式的最新功能*
+*函数式编程和Lambda表达式的最新功能*
 -------------------------
 - 作者：Jacek Galowicz
 - 译者：陈晓伟
@@ -15,13 +15,13 @@ C++17 STL Cook book
 
 作为对《C++17 STL Cook book》的中文翻译。
 
-C++已经出道很久了，在各种领域都有所使用。其快捷、高效和灵活的特点，帮助人们解决了很多问题。C++将要到来的新版本，势必会改变编程者的编程习惯。如果你想要掌握更加高明的编程方式或是代码可轻松移植，那么你必须熟练使用C++17 STL。本书会通过实际例子帮助你了解C++17 STL，并掌握其使用方法。
+C++因其快捷、高效和灵活的特点，帮助人们解决了很多问题，在很多领域种都有所使用。其将要到来的新版本，将会改变人们的编程习惯。如果想要掌握更加高明的编程方式，或是让代码更轻松地移植，就必须熟练掌握C++17 STL。本书将会通过实际例子帮助你了解C++17 STL，并掌握C++17 STL的使用方法。
 
-Beginning with new language features, this book will help you understand the language's mechanics and library features, and offers insight into how they work. Unlike other books, ours takes an implementation-specific, problem-solution approach that will help you quickly overcome hurdles. You will learn the core STL concepts, such as containers, algorithms, utility classes, lambda expressions, iterators, and more, while working on practical real-world recipes. These recipes will help you get the most from the STL and show you how to program in a better way.
+本书将帮助你了解新版本的语言机制和标准库特性，并且告诉你他们如何工作。与众不同的是，我们会采用针对问题的特定解决方案，来帮助你克服使用方面的障碍。我们使用STL来解决实际问题，这样你就能了解到STL的核心，比如容器、算法、工具类、Lambda表达式，迭代器等等。这些实际问题的解决在展示如何更好编程的同时，帮助我们更多的了解STL。
 
-By the end of the book, you will be up to date with the latest C++17 features and save time and effort while solving tasks elegantly using the STL.
+看完本书后，你将了解到C++17最新的功能，并能优雅地使用STL，以很高的效率解决你所遇到的难题。
 
-## 你将学到什么
+## 将会学到
 
 Learn about the new core language features and the problems they were intended to solve
 Understand the inner workings and requirements of iterators by implementing them
