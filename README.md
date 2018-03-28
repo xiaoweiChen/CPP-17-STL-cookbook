@@ -1,6 +1,6 @@
 C++17 STL Cook book
 =========================
-*函数式编程和Lambda表达式的最新功能*
+*挖掘函数式编程和Lambda表达式的最新功能*
 -------------------------
 - 作者：Jacek Galowicz
 - 译者：陈晓伟
@@ -19,21 +19,21 @@ C++因其快捷、高效和灵活的特点，帮助人们解决了很多问题�
 
 本书将帮助你了解新版本的语言机制和标准库特性，并且告诉你他们如何工作。与众不同的是，我们会采用针对问题的特定解决方案，来帮助你克服使用方面的障碍。我们使用STL来解决实际问题，这样你就能了解到STL的核心，比如容器、算法、工具类、Lambda表达式，迭代器等等。这些实际问题的解决在展示如何更好编程的同时，帮助我们更多的了解STL。
 
-看完本书后，你将了解到C++17最新的功能，并能优雅地使用STL，以很高的效率解决你所遇到的难题。
+看完本书后，你将了解到C++17最新的功能，并能优雅地使用STL，高效的解决难题。
 
 ## 将会学到
 
-Learn about the new core language features and the problems they were intended to solve
-Understand the inner workings and requirements of iterators by implementing them
-Explore algorithms, functional programming style, and lambda expressions
-Leverage the rich, portable, fast, and well-tested set of well-designed algorithms provided in the STL
-Work with strings the STL way instead of handcrafting C-style code
-Understand standard support classes for concurrency and synchronization, and how to put them to work
-Use the filesystem library addition available with the C++17 STL
+- 了解新语言的核心特性，以及这些特性所解决的问题。
+- 通过实现迭代器来了解特性的需求，以及其内部工作流程。
+- 探索算法、函数编程风格和Lambda表达式。
+- 使用STL中提供的丰富、可移植、快速、久经考验、精心设计的算法。
+- 使用STL中的字符串代替C风格的字符串。
+- 了解支持并发和同步的标准类，以及如何使用
+- 使用C++17 STL中的文件系统库
 
 ## 作者简介
 
-Jacek Galowicz obtained his master of science in electrical engineering/computer engineering at RWTH Aachen University, Germany. While at university, he enjoyed working as a student assistant in teaching and research, and he participated in several scientific publications. During and after his studies, he worked as a freelancer and implemented applications as well as kernel drivers in C and C++, touching various areas, including 3D graphics programming, databases, network communication, and physics simulation. In recent years, he has been programming performance- and security-sensitive microkernel operating systems for Intel x86 virtualization at Intel and FireEye in Braunschweig, Germany. He has a strong passion for modern C++ implementations of low-level software, and he tries hard to combine high performance with an elegant coding style. Learning purely functional programming and Haskell in recent years triggered his drive to implement generic code with the aid of meta programming.
+Jacek Galowicz 在德国亚琛工业大学(Rheinisch-Westfälische Technische Hochschule Aachen University)获得电气工程/计算机工程硕士学位。在校期间，他特别喜欢以学生助教的身份参加教学和研究，并且在多项科技刊物发表文章。毕业后，他选择做一名自由执业职，并涉及很多领域，比如使用C和C ++编写内核驱动、 3维图像编程、数据库、网络通讯和物理模拟。近几年，他在Intel和FireEye平台上为Intel x86虚拟化编写性能和安全敏感的微内核操作系统，目前常驻于不伦瑞克(德国中北部城市，属下萨克森州)。 他对使用最新的C++实现低层软件有着强烈的热情，并且努力地将高性能与优雅地编码风格相结合。近年来学习纯粹的函数式编程和Haskell的过程，让他有动力在元编程的帮助下实现泛型编码。 
 
 ## 本书相关
 
