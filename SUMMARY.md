@@ -1,7 +1,7 @@
 # 目录
 
 * [前言](content/preface/preface-chinese.md)
-* [关于本书](content/perface/about-this-book-chinese.md)
+* [关于本书](content/preface/about-this-book-chinese.md)
 * [各章梗概](content/preface/chapters-summary-chinese.md)
 * [第1章 C++17的新特性]()
 * [第2章 STL容器]()
