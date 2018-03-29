@@ -35,6 +35,13 @@ C++因其快捷、高效和灵活的特点，帮助人们解决了很多问题�
 
 Jacek Galowicz 在德国亚琛工业大学(Rheinisch-Westfälische Technische Hochschule Aachen University)获得电气工程/计算机工程硕士学位。在校期间，他特别喜欢以学生助教的身份参加教学和研究，并且在多项科技刊物发表文章。毕业后，他选择做一名自由执业职，并涉及很多领域，比如使用C和C ++编写内核驱动、 3维图像编程、数据库、网络通讯和物理模拟。近几年，他在Intel和FireEye平台上为Intel x86虚拟化编写性能和安全敏感的微内核操作系统，目前常驻于不伦瑞克(德国中北部城市，属下萨克森州)。 他对使用最新的C++实现低层软件有着强烈的热情，并且努力地将高性能与优雅地编码风格相结合。近年来学习纯粹的函数式编程和Haskell的过程，让他更有动力在元编程的帮助下实现泛型编码。 
 
+Writing a book and founding a company at the same time was a great and interesting experience in my life and a lot of fun. The fun aspects, however, were only possible because of the support and patience of my wonderful girlfriend Viktoria, my fellow co-founders, and all my friends. Special thanks go to Arne Mertz for his invaluable and meticulous review suggestions, as well as Torsten  Robitzki and Oliver Bruns from the C++ user group Hannover for their great feedback.
+
+## About the Reviewer
+
+**Arne Mertz** is a C++ expert with over a decade of experience. He studied physics at the university of Hamburg, and he switched careers to become a software developer. His main background is in financial enterprise applications written in C++. Arne works at Zuhlke Engineering，Germany and is known for his blog，*Simplify C++!*(https://arne-mertz.de) on clean and maintainable C++. 
+
+
 ## 本书相关
 
 - github 翻译地址：https://github.com/xiaoweiChen/CPP-17-STL-cookbook
