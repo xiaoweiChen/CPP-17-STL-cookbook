@@ -41,7 +41,7 @@ Jacek Galowicz 在德国亚琛工业大学(Rheinisch-Westfälische Technische Ho
 
 ## 代码评审者
 
-**Arne Mertz**是一个具有10多年C++经验的专家。他在汉堡大学攻读物理专业，而后转行成为一名软件开发攻城狮。其主要使用C++完成金融企业的应用程序。Arne就任于德国Zuhlke Engineering公司，并且它的博客也非常出名——*Simplify C++!*(https://arne-mertz.de)。对于C++，其主张在使用清爽的代码风格和良好的可维护性。
+**Arne Mertz**是一个具有10多年C++经验的专家。他在汉堡大学攻读物理专业，而后转行成为一名软件开发攻城狮。其主要使用C++完成金融企业的应用程序。Arne就任于德国Zuhlke Engineering公司，并且它的博客也非常出名——[Simplify C++!](https://arne-mertz.de)。对于C++，其主张在使用清爽的代码风格和良好的可维护性。
 
 
 ## 本书相关
