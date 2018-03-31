@@ -1,32 +1,32 @@
-# What you need for this book 
+# 关于本书 
 
-All recipes in this book are kept as simple and self-contained as possible. They are easy to compile and run, but depending on the reader's choice of operating system and compiler, there are differences. Let's have a look how to compile and run all the recipes, and what else to pay attention to. 
+本书中所有的例子都很简单，都可以很容易编译和运行，不过读者们还是需要注意一下自己所选择的操作系统和编译器。下面就让我们来看一下在编译和运行本书例程时，所要注意的一些内容。
 
+# 编译和运行例程 
 
+本书的所有例子都在Linux和Mac OS进行开发和验证，我们使用GNU的C++编译器**g++**, 和LLVM的C++编译器 **clang++**。
 
-# Compiling and running the recipes 
+ 在shell环境下可以使用如下的命令使用g++编译例程：
 
-All the code in this book has been developed and tested on Linux and MacOS, using the GNU C++ compiler, **g++**, and the LLVM C++ compiler, **clang++**. 
+`$ g++ -std c++lz —o recipe_app recipe_code.cpp `
 
-Building an example in the shell can be done with the following command using g++: 
-`$ g++ -std c++lz —o recipe_app recipe_code. cpp `
+要使用clang++的话，命令行类似: 
 
-Using clang++, the command is similar: 
-`$ clang++ -std C++ Iz -o recipe_app recipe_code. cpp `
+`$ clang++ -std C++ Iz -o recipe_app recipe_code.cpp `
 
-Both the command-line examples assume that the file `recipe_code. cpp` is the text file containing your C++ code. After compiling the program, the executable binary will have the filename `recipe_app` and can be executed as follows: 
+上面两个例子都假设我们的C++例程写在 `recipe_code.cpp`文件中。完成编译后，生成可执行二进制文件`recipe_app`，然后使用如下命令执行它：
+
 `$ . /recipe_app `
 
-In a lot of examples, we read the content of entire files via standard input. In such cases, we use the standard UNIX pipes and the UNIX `cat` command to direct the file content into our app, as follows: 
-`$ cat file. txt | ./recipe_app`
+书中很多例子，都是通过标准输入读取整个文件的内容。遇到这样的例子时，我们使用标准UNIX管道和`cat`命令直接将文件内容传输给我们的应用，命令如下所示：
 
-This works on Linux and MacOS. In the Microsoft Windows shell, it works as follows: 
+`$ cat file.txt | ./recipe_app`
 
-`> recipe app. exe < file.txt`
+上面的方法适用于Linux和Mac OS系统。在微软Windows Shell中，需要使用如下的命令: 
 
-If you do not happen to run your programs from the command-line shell, but from the Microsoft Visual Studio IDE, then you need to open the dialogue, `"Configuration properties > Debugging "`, and add the`"< file. txt"` part to the command line of the app that Visual Studio uses for launching. 
+`> recipe app.exe < file.txt`
 
-
+如果你不想在Shell命令行中运行，你可以在Microsoft Visual Studio IDE中运行，不过需要你修改一下配置, `"Configuration properties > Debugging "`,并且添加`"< file. txt"` ，使用 Visual Studio加载应用就能直接运行程序了。(Visual Studio IDE的话选定对应的解决方案，右键后选择“属性”，在“调试”页面输入相应的命令行参数)
 
 # Requirements for early adopters 
 
