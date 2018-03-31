@@ -28,65 +28,67 @@
 
 如果你不想在Shell命令行中运行，你可以在Microsoft Visual Studio IDE中运行，不过需要你修改一下配置, `"Configuration properties > Debugging "`,并且添加`"< file. txt"` ，使用 Visual Studio加载应用就能直接运行程序了。(Visual Studio IDE的话选定对应的解决方案，右键后选择“属性”，在“调试”页面输入相应的命令行参数)
 
-# Requirements for early adopters 
+# 前期准备 
 
-If you happen to read this book in the earliest days of C++17 and use bleeding- edge compilers to compile the code, you might experience that some recipes do not compile yet. This depends on how much of the C++17 STL has been implemented already in your STL distribution. 
+如果最近你阅读了本书中C++17的新特性，并使用前卫的编译器编译了这些代码，你可能会在编译阶段遇到一些问题。因为你使用到的一些C++17 STL新特性可能还没有在编译器中进行实现。
 
-While writing this book, it was necessary to add the path prefix `experimental/` to the headers`<execution_policy>` and `<filesystem>`. There might also be additional includes such as algorithm, numeric, and so on, in the `experimental/ `folder of your ST L distribution, depending on how new and stable it is. 
+While writing this book, it was necessary to add the path prefix 写这本书时，需要给`<execution_policy>` 和`<filesystem>`头文件添加前缀`experimental/` 。其会将你将是用到的一些STL算法、数值等等包含入你的代码中，不过这也取决于编译器标准库的更新程度和稳定性。
 
-The same applies for the namespace of brand new features. The parts of the library that were included from the experimental part of the STL are usually exported not within the `std` namespace but the `std: : experimental` namespace. 
+这同样使用于命名空间的新特性。标准库中，实验部分的实现并不在`std`命名空间中，而是在`std::experimental`中。
 
+# 适读群体 
 
+如果你没有编写过C++程序的经验，那么请将本书放回书架。如果你只想学习有关语言基础的只是，那么本书不是你理想的选择。当你了解完语言基础后，本书会对你的语言技巧进行升级。
 
-# Who this book is for 
+除此之外，如果你符合如下的描述的话，可以继续阅读本书：
 
-This book is not for you if you have no prior knowledge of writing and compiling C++ programs. If you read about the basics of this language already, this book is the ideal second book about C++ to take your knowledge to an advanced level. 
+- 已经了解过C++的基础，不过现在你不知道下一步自己该怎么走，这是因为你与资深C++达人还有很大的差距。
+- C++基础十分牢靠，但是你对STL知之甚少。
+- 对C++的某个老版本比较了解，比如C++98、C++11或C++14。
 
-Apart from that, you are a good candidate for reading this book if you can identify yourself with one of the following bullet point descriptions: 
+以上这些描述，都是基于你使用C++的频度而论。本书储备了很多优秀的STL新特性，等待你去发现。
 
-You have learned the basics of C++, but now, you don't have a clue where to go next, since the gap between your knowledge and the knowledge of an experienced C++ veteran is still large. You know C++ well, but your knowledge of the ST L is limited. You know C++ from one of the older standards, such as C++98, C++11, or C++14. Depending on how far in the past you used C++ the last time, this book has a lot of nice new STL features and perks in store, ready for you to discover. 
+# 章节设计 
 
+本书中你会发现几个经常出现的标题：
 
+(*译者：这些副标题只在本节翻译，正文中使用英文原文作为副标题*)
 
-# Sections 
+- Getting ready
+- How to do it
+- How it works
+- There's more
+- See also
 
-In this book, you will find several headings that appear frequently (Getting ready, How to do it, How it works, There's more, and See also). 
+下面简单介绍一些这几个副标题所涵盖的内容：
 
-To give clear instructions on how to complete a recipe, we use these sections as follows: 
+## 准备开始 Getting ready 
 
-## Getting ready 
+本节会说明我们的期望，以及如何在初期对环境或软件进行配置。 
 
-This section tells you what to expect in the recipe, and describes how to set up any software or any preliminary settings required for the recipe. 
+## 如何完成 How to do it... 
 
-## How to do it... 
+本节包含实现所需的步骤。
 
-This section contains the steps required to follow the recipe. 
+## 如何工作 How it works... 
 
-## How it works... 
+本节会对前一节所发生的事情，进行详细解释。
 
-This section usually consists of a detailed explanation of what happened in the previous section. 
+## 信息补充 There's more... 
 
-## There's more... 
+本节包含了一些式例相关的补充信息，以便读者对式例有更深入的了解。
 
-This section consists of additional information about the recipe in order to make the reader more 
-knowledgeable about the recipe. 
+## 更多信息 See also 
 
+为式例提供一些帮助链接，有助于了解C++的更多知识。
 
+# 文本样式 
 
-## See also 
+本书中，使用不同的文本样式区分不同种类的信息。下面的一些例子会解释这些风格的含义。
 
-This section provides helpful links to other useful information for the recipe. 
+文本的代码，数据库表名，文件夹名，文件名，文件的扩展名，路径名，虚拟的URL，用户输入和推特引用，会展示成这种样式： "下一步需要修改`build.properties ` 文件。" 
 
-
-
-# Conventions 
-
-In this book, you will find a number of text styles that distinguish between different kinds of information. Here are some examples of these styles and an explanation of their meaning. 
-
-Code words in text, database table names, folder names, filenames, file extensions, pathnames, dummy URLs, user input, and Twitter handles are shown as follows: "The next step is to edit 
-`build. properties ` file." 
-
-A block of code is set as follows: 
+代码块为这种样式：
 
 ```c++
 my_wrapper<T1, T2, T3> make wrapper (Tl t 1, T 2 t2, T3 t3) 
@@ -95,47 +97,38 @@ my_wrapper<T1, T2, T3> make wrapper (Tl t 1, T 2 t2, T3 t3)
 }
 ```
 
-**New terms** and **important words** are shown in bold. Words that you see on the screen, for example, in menus or dialog boxes, appear in the text like this: "Once done, click on Activate." 
-*Warnings or important notes appear in a box like this.*
-*Tips and tricks appear like this.*
+**新术语**和**关键字**使用粗体。你在屏幕上看到的单词，例如菜单或对话框，会是这种样式: "完成后，点击执行。" 
 
+*警告或重要说明会显示在一个方框中。*
 
+*提示和技巧会用斜体样式*
 
-# Reader feedback 
+# 读者反馈 
 
-Feedback from our readers is always welcome. Let us know what you think about this book-what you liked or disliked. Reader feedback is important for us as it helps us develop titles that you will really get the most out of. To send us general feedback, simply e-mail `feedback@packtpub. com`, and mention the book's title in the subject of your message. If there is a topic that you have expertise in and you are interested in either writing or contributing to a book, see our author guide at www.packtpub.com/authors. 
+我们欢迎读者的反馈。这样我们就知道这本书哪里好，哪里不好。读者的反馈对于我们来说十分重要，并且能帮助我们确定读者关注的重点，从而让读者在阅读本书时的收获最大化。一般的反馈可以通过发送电子邮件到 `feedback@packtpub.com`，并在主题中提到这本书的名字即可。如果您是某个方便的专家，并且对写作或写书感兴趣的话， 可以了解一下我们的作者指南www.packtpub.com/authors 。
 
+# 客户支持 
 
+现在您已经是本书的主人，我们会为您购买本书的行为，提供相应的支持服务。
 
-# Customer support 
+# 源码下载 
 
-Now that you are the proud owner of a Packt book, we have a number of things to help you to get the most from your purchase. 
+可使用您在 http://www.packtpub.com 的账号下载本书式例代码。 如果您在别处购买了本书，可以通过访问 http://wmv.packtpub.com/support ，客服会将注册文件直接发送给您。
 
+您可以按照以下步骤下载代码：
 
+- 网页端使用您的电子邮件地址和密码进行登录或注册。将鼠标悬停在“SUPPORT”标签上。点击“Downloads & Errata”。搜索框内键入本书的名字。选择你所查找的书籍，并下载其代码包。只需您在购买本书的下拉菜单中点击“Code Download”即可。
+- 压缩包下载完毕后，请确认您所使用的解压缩软件的版本和所解压的文件夹地址。Windows：WinRAR / 7-Zip；Mac ：Zipeg / iZip / UnRarX；Linux ：7-Zip / PeaZip。
 
-# Downloading the example code 
+本书代码github的托管地址为 https://github.com/PacktPublishing/Cpp17-STL-Cookbook 其他书籍的代码包和视频目录在 https://github.com/PacktPublishing/ 下都能看到。快去看一下吧！
 
-You can download the example code files for this book from your account at http://www.packtpub.com. If you purchased this book elsewhere, you can visit http://wmv.packtpub.com/support and register to have the files e-mailed directly to you. 
-
-You can download the code files by following these steps: 
-
-- Log in or register to our website using your e-mail address and password. Hover the mouse pointer on the SUPPORT tab at the top. Click on Code Downloads & Errata. Enter the name of the book in the Search box. Select the book for which you're looking to download the code files. Choose from the drop-down menu where you purchased this book from. Click on Code Download. 
-- Once the file is downloaded, please make sure that you unzip or extract the folder using the latest version of: WinRAR / 7-Zip for Windows Zipeg / iZip / UnRarX for Mac 7-Zip / PeaZip for Linux 
-
-The code bundle for the book is also hosted on GitHub at https://github.com/PacktPublishing/Cpp17-STL-Cookbook also have other code bundles from our rich catalog of books and videos available at 
-https://github.com/PacktPublishing/. Check them out! 
-
-
-
-# Errata 
+# 勘误列表 
 
 Although we have taken every care to ensure the accuracy of our content, mistakes do happen. If you find a 
 mistake in one of our books-maybe a mistake in the text or the code-we would be grateful if you could report this to us. By doing so, you can save other readers from frustration and help us improve subsequent versions of this book. If you find any errata, please report them by visiting http://mvw.packtpub.com/submit-errata, selecting your book, clicking on the Errata Submission Form link, and entering the details of your errata. Once your errata are verified, your submission will be accepted and the errata will be uploaded to our website or added to any list of existing errata under the Errata section of that title. 
 To view the previously submitted errata, go to https://mwv.packtpub.com/books/content/support and enter the name of the book in the search field. The required information will appear under the Errata section. 
 
-
-
-# Piracy 
+# 盗版必究 
 
 Piracy of copyrighted material on the Internet is an ongoing problem across all media. At Packt, we take the protection of our copyright and licenses very seriously. If you come across any illegal copies of our works in any form on the Internet, please provide us with the location address or website name immediately so that we can pursue a remedy. 
 
@@ -143,6 +136,6 @@ Please contact us at `copyright@packtpub. com` with a link to the suspected pira
 
 We appreciate your help in protecting our authors and our ability to bring you valuable content. 
 
-# Questions 
+# 问题解答 
 
 If you have a problem with any aspect of this book, you can contact us at `questions@packtpub. com`, and we will do our best to address the problem. 
