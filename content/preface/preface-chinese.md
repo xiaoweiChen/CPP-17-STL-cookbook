@@ -2,11 +2,14 @@
 
 《C++17 STL Cookbook》将结合C++代码实例和其标准库(STL)，教会你如何充分使用C++17。这里要说明的是，本书会尽可能的去使用STL，来教会大家使用C++17。
 
-C++ is such a great and powerful language. It allows us to hide complex solutions behind simple high-level interfaces but, at the same time, to write low-level code where high performance and low overhead really matter. The ISO C++ Standard Committee works hard on improving the C++ standard. C++11 brought a lot of great features to C++, and so did C++14 and C++17. 
+C++是一门伟大且具有力量的语言。它使用简单的高级接口，将隐藏复杂的解决方式隐藏于背后，不过这样就意味着需要编写高效和低开销的底层代码实现。国际标准化组织(ISO)C++标准委员会致力于改进C++标准。C++11标准为C++带来了大量不错的特性，C++14和C++17也为C++加入了些新的特性。
 
-As of today, C++ is a language that provides language features and standard library facilities for sophisticated standard data structures and algorithms, automatic resource management pointers, lambda expressions, constant expressions, portable thread control for concurrent programming, regular expressions, random number generators, exceptions, variadic templates (the part of C++ for expressing template types is even Turing-complete!), user-defined literals, portable filesystem traversal, and so much more. This giant bunch of features makes it a general-purpose language ideal for implementing high-quality and high-performance software in all fields of the software industry. 
+目前为止，C++作为一门编程语言提供了语言相应的语言特性个标准库工具，用于处理复杂的标准数据结构和算法，包括：智能指针、Lambda表达式、常量表达式、便捷式可控线程的并发编程、正则表达式、随机数发生器、异常、可变参数模板(C++的部分模板类是图灵完备的!)、自定义文字、便捷式文件系统遍历等等。这些功能使它成为一种通用的语言，并在软件行业的所有领域，用于实现高质量和高性能的软件。
 
-However, many C++ programmers eagerly learn C++ as a language but put its standard library, the ST L, in the second place. Using the C++ language without the help that the standard library provides often leads to programs that look like C with classes, but not what modern programs in the 21st century should look like. This is very sad because using C++ like that means dropping half its strength. 
-In the C++11 edition of his book, The C++ Programming Language, Bjarne Stroustrup writes, "Please remember that those libraries and language features exist to support programming techniques for developing quality software. They are meant to be used in combination--as bricks in a building set--rather than to be used individually in relative isolation to solve a specific problem." 
+不过，很多编程者只将C++当做一门编程语言学习，而不太重视标准库(STL)的使用。不使用C++所带的标准库，将会让C++看起来就像是具有类型的C语言，21世纪的现代化程序不应该写成这样。并且，这样的使用时令人沮丧的，就像是卸掉了它的一条手臂一样。
 
-This is exactly what this book and its recipes are about. All the recipes in this book are designed to be as near as possible to real-life problems, while at the same time, they do not rely on any external libraries other than the STL. This way, it is very simple to play around with each of them, without having to do confusing setup work. I really hope that you find inspiration in the recipes and, maybe, find some of them to be nice standard building blocks for solving higher-level problems with this great programming language. 
+Bjarne Stroustrup(C++之父)在他的《C++程序设计语言》(C++11版本)中写到
+
+> 请牢记，标准库和语言功能都是为了支撑以软件质量为目标的编程技术。他们应被组合起来发挥作用——如同建房子的砖块——而非个别地采用来相对孤立地去解决某个特定问题。
+
+这段话能很明确的概括我写这本书的目的。本书的所有例子都与实际生活息息相关，处理这些问题时，我们只依赖与STL，不依赖其他的库。少了其他库的依赖，就能很容易的将程序运行起来，不必去为开发环境所困扰。 我希望你们受这些例子的启发，找到使用标准库的灵感，用伟大的编程语言作为解决更高级问题的基石。
