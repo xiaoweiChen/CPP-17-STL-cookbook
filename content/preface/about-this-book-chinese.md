@@ -120,7 +120,11 @@ my_wrapper<T1, T2, T3> make wrapper (Tl t 1, T 2 t2, T3 t3)
 - 网页端使用您的电子邮件地址和密码进行登录或注册。将鼠标悬停在“SUPPORT”标签上。点击“Downloads & Errata”。搜索框内键入本书的名字。选择你所查找的书籍，并下载其代码包。只需您在购买本书的下拉菜单中点击“Code Download”即可。
 - 压缩包下载完毕后，请确认您所使用的解压缩软件的版本和所解压的文件夹地址。Windows：WinRAR / 7-Zip；Mac ：Zipeg / iZip / UnRarX；Linux ：7-Zip / PeaZip。
 
-本书代码github的托管地址为 https://github.com/PacktPublishing/Cpp17-STL-Cookbook 其他书籍的代码包和视频目录在 https://github.com/PacktPublishing/ 下都能看到。快去看一下吧！
+本书代码github的托管地址为 https://github.com/PacktPublishing/Cpp17-STL-Cookbook 
+
+其他书籍的代码包和视频目录在 https://github.com/PacktPublishing/ 下都能看到。
+
+快去看一下吧！
 
 # 勘误列表 
 
