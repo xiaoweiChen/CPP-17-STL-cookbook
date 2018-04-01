@@ -1,21 +1,21 @@
-# What this book covers 
+# 各章梗概 
 
-Chapter 1,  The New C++17 Features, specializes on the new and game-changing additions that the C++17 standard brought to C++ as a language, so we can concentrate on the additions to the ST L in the following chapters. 
+第1章，C++17新特性。介绍那些对C++语言来说很重大的改变，以便后续的章节中将精力集中在STL上。
 
-Chapter 2,  STL Containers, explains how the STL's rich variety of container data structures got some upgrades with C++17. After having a look at the entire collection of the different containers, we will have a closer look on the new additions they got.
+第2章，STL容器。STL容器在C++17标准中进行了升级，让我们见识一下STL容器的数据类型是多么的丰富。粗略的了解一下不同的容器后，再仔细了解其添加的新内容。
 
-Chapter 3,  Iterators, explains iterators, which are an extremely important abstraction as they are the glue between the STL's algorithms and the container data structures, whenever they are combined. We are going to roll up the whole iterator concept from the ground to learn how to put them to the best use in all our programs. 
+第3章，迭代器。迭代器是STL中很重要的概念，其连接了STL算法和容器数据类型，将二者紧密联系在一起。我们将用实际例子来了解如何使用迭代器，从而更好的了解迭代器的概念。
 
-Chapter 4, Lambda Expressions, explores lambda expressions, which allow for some very interesting programming patterns. Inspired by purely functional programming languages, lambda expressions, which were first introduced in C++11, got some new features with C++14 and C++17. 
+第4章，Lambda表达式。这是一种很有意思的编程模式。其为纯函数式编程的方式，C++11标准引入Lambda表达式，C++14和C++17标准为其添加了一些新特性。
 
-Chapter 5, STL Algorithm Basics, introduces the basics of the STL's standard algorithms that are easy to use, very performant, well-tested, and highly generic. We will learn how to use them, so we can be productive by concentrating on solutions, instead of wasting time reinventing the wheel. 
+第5章，STL基础算法。介绍了STL的标准算法的特点，简单易用、性能不错、鲁棒性好和高度通用。我们将学习如何使用它们，这样就可以集中精力在解决问题上，而不是浪费时间去重新发明轮子。
 
-Chapter 6, Advanced Use of ST L Algorithms, demonstrates how to combine the STL's basic algorithms in order to compose more complex ones in clean ways without code duplication. In this chapter, we will be creative and stick tightly to the ST L while implementing solutions to more complex problems, and we will learn how to combine existing algorithms to create new ones that really fit our needs. 
+第6章，STL算法的高级使用方式。演示如何通过使用STL基本算法，以更简洁的方式编写更复杂的算法，而无需重复代码。本章中，我们在充分利用STL解决更复杂问题的同时，将学习如何结合现有的算法，来创建真正符合需求的新算法。
 
-Chapter 7, Strings, Stream Classes, and Regular Expressions, provides a detailed overview over the STL's powerful classes around strings, generic I/O streaming, and regular expressions. We will have an in-depth look into these parts of the ST L in this chapter. 
+第7章，字符串, 流和正则表达。对STL中关于字符串、通用I/O流和正则表达式的类型进行详细概述。本章将深入研究STL的这部分内容。
 
-Chapter 8, Utility Classes, explains the STL ways of generating random numbers, taking and measuring the time, managing dynamic memory, elegantly signalizing error conditions, and more. We will have a look at the extremely useful and portable utility classes that the C++ ST L provides for such tasks and introduce the brand new ones that came with C++17. 
+第8章，工具类。了解STL如何生成随机数，测量时间，管理动态内存，优雅地提示错误条件等等。我们会来了解一下这些极为有用，并且有这很好可移植性的工具类，并且会介绍C++17带来的全新STL工具。
 
-Chapter 9, Parallelism and Concurrency, showcases the existing C++ extensions for parallelism and concurrency which became very important topics at the time we entered the era of multi-core processors. First C++11, and then C++17, came with great additions that are of an enormous help whenever we need to implement programs that run on multiple cores and do things concurrently. So, we make sure we grasp these concepts in this chapter. 
+第9章，并行于并发。当我们在多处理器领域编写代码时，并行和并发就变得很重要。C++11标准首先引入并行和并发的概念，C++17随后进行加强，这对于我们编写并发程序来说有很大的帮助。因此，我们要本章掌握这些概念。
 
-Chapter 10, Filesystem, shows that although the STL always provided support for reading and manipulating individual files, C++17 got a lot of new value with its whole new operating system-independent library for the handling of filesystem paths and the traversal of directories. In this chapter, we will learn how to use it. 
+第10章，文件系统。虽然之前的STL提供对单个文件读取和操作，但这还无法达到用户的需求。C++17添加了很多新的操作(独立于操作系统库)用于处理文件体统路径，以及对目录进行遍历。本章我们将了解，如何使用它们。
