@@ -128,18 +128,16 @@ my_wrapper<T1, T2, T3> make wrapper (Tl t 1, T 2 t2, T3 t3)
 
 # 勘误列表 
 
-Although we have taken every care to ensure the accuracy of our content, mistakes do happen. If you find a 
-mistake in one of our books-maybe a mistake in the text or the code-we would be grateful if you could report this to us. By doing so, you can save other readers from frustration and help us improve subsequent versions of this book. If you find any errata, please report them by visiting http://mvw.packtpub.com/submit-errata, selecting your book, clicking on the Errata Submission Form link, and entering the details of your errata. Once your errata are verified, your submission will be accepted and the errata will be uploaded to our website or added to any list of existing errata under the Errata section of that title. 
-To view the previously submitted errata, go to https://mwv.packtpub.com/books/content/support and enter the name of the book in the search field. The required information will appear under the Errata section. 
+尽管我们很认真的保证本书内容的正确性，但难免还是会出现错误。如果您在我们的书或代码中发现了疑似错误的地方，请反馈给我们，我们将感激不尽。如果这真是个错误，我们将在后续的版本中修复这个问题，以免误导更多的读者。如果您发现了任何错误，请访问 http://mvw.packtpub.com/submit-errata 选择本书，点击勘误提交的链接，然后详述你发现的问题。当您的勘误得到了验证，您的勘误将会记录在我们的勘误列表上。
+
+想要了解之前的勘误列表, 可以在 https://mwv.packtpub.com/books/content/support 上面输入书籍的名字查找对应的勘误列表。想要看到的内容将会出现在勘误栏下。
 
 # 盗版必究 
 
-Piracy of copyrighted material on the Internet is an ongoing problem across all media. At Packt, we take the protection of our copyright and licenses very seriously. If you come across any illegal copies of our works in any form on the Internet, please provide us with the location address or website name immediately so that we can pursue a remedy. 
+互联网上存在着盗版问题。Packt非常重视我们的版权和许可证。如果您在网上发现我们的作品的非法副本，请提供地址或网站名称，以便我们进行维权。
 
-Please contact us at `copyright@packtpub. com` with a link to the suspected pirated material. 
-
-We appreciate your help in protecting our authors and our ability to bring you valuable content. 
+请通过 `copyright@packtpub. com` 联系我们，麻烦在邮件内附上与涉嫌盗版的相关资料。感谢您帮助我们保护相关作品的只是产权。
 
 # 问题解答 
 
-If you have a problem with any aspect of this book, you can contact us at `questions@packtpub. com`, and we will do our best to address the problem. 
+如果您对本书有任何的问题，您可以通过向 `questions@packtpub.com`发送邮件告诉我们，我们会尽可能的解答您所提出的问题。
