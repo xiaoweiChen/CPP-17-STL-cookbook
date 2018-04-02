@@ -41,11 +41,66 @@ stock_info(const std::string &name);
 const auto [name, valid_time, price] = stock_info("INTC");
 ```
 
+* 结构化绑定也能用在自定义结构体上。我们假设有这么一个结构体：
+
+```c++
+struct employee{
+    unsigned id;
+    std::string name;
+    std::string role;
+    unsigned salary;
+};
+```
+
+现在我们来看下如何使用结构化绑定访问每一个成员。我们假设有一组employee结构体的实例，存在于vector中，下面使用循环将其内容进行打印：
+
+```c++
+int main(){
+    std::vector<employee> employees{
+        /* Initialized from somewhere */
+    };
+    
+    for (const auto &[id, name, role, salary] : employees){
+        std::cout << "Name: " << name
+                  << "Role: " << role
+                  << "Salary: " << salary << '\n';
+    }
+}
+```
+
 
 
 ## How it works...
 
+结构化绑定以下方式进行应用：
 
+`auto [var1, var2, ...] = <pair, tuple, struct, or array expression>;`
+
+- `var1, var2, ...`表示一个变量列表，其变量数量必须匹配表达式所对应的结构。
+- `<pair, tuple, struct, or array expression>`必须是下面的其中一种：
+  - 一个std::pair实例。
+  - 一个std::tuple实例。
+  - 一个结构体实例。其所有成员都必须是非静态成员，每个成员以基础类定义。结构体中的第一个声明成员赋予第一个变量的值，第二个声明的编程赋予第二个变量的值，依次类推。
+  - 固定长度的数组。
+- `auto`部分，可以是`auto`,`const auto`,`const auto&`和`auto&&`。
+
+> Note
+>
+> 不仅为了性能，还必须确保在适当的时刻使用引用，尽量减少不必要的副本。
+
+如果中括号中变量不够，那么编译器将会报错:
+
+```c++
+std::tuple<int, float, long> tup(1, 2.0, 3);
+auto [a, b] = tup; // Does not work
+```
+
+这个例子中想要将三个成员值，只赋予两个变量。编译器会立即发现这个错误，并且提示我们:
+
+```
+error: type 'std::tuple<int, float, long>' decomposes into 3 elements, but only 2 names were provided
+auto [a, b] = tup;
+```
 
 ## There's more...
 
