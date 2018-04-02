@@ -82,7 +82,7 @@ int main(){
   - 一个std::tuple实例。
   - 一个结构体实例。其所有成员都必须是非静态成员，每个成员以基础类定义。结构体中的第一个声明成员赋予第一个变量的值，第二个声明的编程赋予第二个变量的值，依次类推。
   - 固定长度的数组。
-- `auto`部分，可以是`auto`,`const auto`,`const auto&`和`auto&&`。
+- `auto`部分，也就是`var`的类型，可以是`auto`,`const auto`,`const auto&`和`auto&&`。
 
 > Note
 >
