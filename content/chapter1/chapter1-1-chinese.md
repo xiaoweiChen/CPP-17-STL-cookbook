@@ -68,8 +68,6 @@ int main(){
 }
 ```
 
-
-
 ## How it works...
 
 结构化绑定以下方式进行应用：
@@ -104,5 +102,32 @@ auto [a, b] = tup;
 
 ## There's more...
 
+STL中的基础数据结构都能通过结构结构化绑定直接进行访问，而无需修改任何东西。考虑下面这个例子，循环中打印std::map中的元素：
 
+```c++
+std::map<std::string, size_t> animal_population {
+  {"humans", 7000000000},
+  {"chickens", 17863376000},
+  {"camels", 24246291},
+  {"sheep", 1086881528},
+  /* ... */
+};
+
+for (const auto &[species, count] : animal_population) {
+  std::cout << "There are " << count << " " << species
+            << " on this planet.\n";
+}
+```
+
+从std::map容器中获取元素的方式比较特殊，我们会在每次迭代时获得一个`std::pair<const key_type, value_type>`实例。另外每个实例都需要进行结构化绑定(key_type绑定到species字符串上，value_type为一个size_t格式的统计数字)，从而达到访问每一个成员的目的。
+
+在C++17之前，使用std::tie可达到类似的效果:
+
+```c++
+int remainder;
+std::tie(std::ignore, remainder) = divide_remainder(16, 5);
+std::cout << "16 % 5 is " << remainder << '\n';
+```
+
+这个例子展示了如何将结果组对解压到两个变量中。std::tie的能力远没有结构化绑定强，因为在进行赋值的时候，所有变量需要提前定义。另外，本例也展示了一种在std::tie中有，而结构话绑定没有的功能：可以使用std::ignore的值，作为虚拟变量。分数部分将会赋予到这个虚拟变量中，因为这里我们不需要用到分数值，所以使用虚拟变量忽略分数值。
 
