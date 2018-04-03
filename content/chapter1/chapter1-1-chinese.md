@@ -82,7 +82,7 @@ int main(){
   - 固定长度的数组。
 - `auto`部分，也就是`var`的类型，可以是`auto`,`const auto`,`const auto&`和`auto&&`。
 
-> Note
+> Note:
 >
 > 不仅为了性能，还必须确保在适当的时刻使用引用，尽量减少不必要的副本。
 
@@ -131,3 +131,29 @@ std::cout << "16 % 5 is " << remainder << '\n';
 
 这个例子展示了如何将结果组对解压到两个变量中。std::tie的能力远没有结构化绑定强，因为在进行赋值的时候，所有变量需要提前定义。另外，本例也展示了一种在std::tie中有，而结构话绑定没有的功能：可以使用std::ignore的值，作为虚拟变量。分数部分将会赋予到这个虚拟变量中，因为这里我们不需要用到分数值，所以使用虚拟变量忽略分数值。
 
+> Note:
+>
+> 使用结构化绑定时，就不能再使用std::tie创建虚拟变量了，所以我们不得不绑定所有值到命名过的变量上。对部分成员进行绑定的做法是高效的，因为编译器可以很容易的对未绑定的变量进行优化。
+
+回到之前的例子，divide_remainder函数也可以通过使用传入输出参数的方式进行实现：
+
+```c++
+bool divide_remainder(int dividend, int divisor, int &fraction, int &remainder);
+```
+
+调用该函数的方式如下所示：
+
+```c++
+int fraction, remainder;
+const bool success {divide_remainder(16, 3, fraction, remainder)};
+if (success) {
+  std::cout << "16 / 3 is " << fraction << " with a remainder of "
+            << remainder << '\n';
+}
+```
+
+很多人都很喜欢使用特别复杂的结构，比如组对、元组和结构体，他们认为这样避免了中间拷贝过程，所以代码会更快。对于现代编译器来说，这种想法不再是正确的了，这里编译器并没有刻意避免拷贝过程，而是优化了这个过程。(其实拷贝过程还是存在的)。
+
+> Note:
+>
+> 与C的语法特征不同，将复杂结构体作为返回值传回会耗费大量的时间，因为对象需要在返回函数中进行初始化，之后将这个对象拷贝到相应容器中返回给调用端。现代编译器支持**[返回值优化](https://zh.wikipedia.org/wiki/%E8%BF%94%E5%9B%9E%E5%80%BC%E4%BC%98%E5%8C%96)**(RVO, *return value optimization*)技术，这项技术可以省略中间副本的拷贝。
