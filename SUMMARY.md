@@ -12,7 +12,7 @@
   * [只有头文件的库中启用内联变量](content/chapter1/chapter1-6-chinese.md)
   * [使用折叠表达式实现辅助函数](content/chapter1/chapter1-7-chinese.md)
 * [第2章 STL容器](content/chapter2/chapter2-0-chinese.md)
-  * [擦除/删除std::vector元素](content/chapter2/chapter2-1-chinese.md)
+  * [擦除/移除std::vector元素](content/chapter2/chapter2-1-chinese.md)
   * [以O(1)的时间复杂度删除未排序std::vector中的元素](content/chapter2/chapter2-2-chinese.md)
   * [快速或安全的访问std::vector实例的方法](content/chapter2/chapter2-3-chinese.md)
   * [保持对std::vector实例的排序](content/chapter2/chapter2-4-chinese.md)
