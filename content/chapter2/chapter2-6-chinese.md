@@ -20,7 +20,7 @@
 
    ```c++
    int main(){
-       std::map<std::string, size_t>
+       std::map<std::string, size_t> m{{"b", 1},
    ```
 
 3. 我们将插入多个元素，对于每次插入，我们都会传入一个hint迭代器。第一次插入我们不指定其开始位置，只将插入位置指向map的end迭代器之前。
