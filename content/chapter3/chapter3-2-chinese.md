@@ -108,5 +108,5 @@ pointer、reference和difference_type并没有在num_iterator中定义，因为�
 
 ## There's more...
 
-C++17标准之前，C++都鼓励自定义迭代器继承与`std::iterator<...>`，这样所有主流的类型都会自动定义。C++17中这条建议任然能工作，但是不再是那么鼓励从`std::iterator<...>`继承了。
+C++17标准之前，C++都鼓励自定义迭代器继承与`std::iterator<...>`，这样所有主流的类型都会自动定义。C++17中这条建议仍然能工作，但是不再是那么鼓励从`std::iterator<...>`继承了。
 
