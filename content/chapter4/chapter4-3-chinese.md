@@ -113,5 +113,5 @@ auto concat(F f, G g, H h)
 
 这个例子看起来应该很简单了吧。我们返回的Lambda表达式可以对f，g和h函数进行捕获。这个Lambda表达式可以接受任意多的参数传入，然后在调用f，g和h函数。我们先定义` auto combined (concat(f, g, h))`，并在之后传入两个参数，例如`combined(2, 3)`，这里的2和3就为concat函数的参数包。
 
-看起来很复杂，但concat却很通用；我们这里有别与` f ( g( h( params... ) ) )`式的串联。我们完成的是`f( concat(g, h) )(params...)`的串联，` f( g( concat(h) ) )(params...)`为其下一次递归调用的结果，最终会的结果为`f( g( h( params... ) ) )`。
+看起来很复杂，但concat却很通用；我们这里有别与` f(g(h( params... )))`式的串联。我们完成的是`f(concat(g, h))(params...)`的串联，` f(g(concat(h)))(params...)`为其下一次递归调用的结果，最终会的结果为`f(g(h( params...)))`。
 
