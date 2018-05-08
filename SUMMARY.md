@@ -44,7 +44,7 @@
   * [编译时生成笛卡尔乘积](content/chapter4/chapter4-7-chinese.md)
 * [第5章 STL基础算法](content/chapter5/chapter5-0-chinese.md)
   * [容器间相互复制元素](content/chapter5/chapter5-1-chinese.md)
-  * [容器归类](content/chapter5/chapter5-2-chinese.md)
+  * [容器元素排序](content/chapter5/chapter5-2-chinese.md)
   * [从容器中删除指定元素](content/chapter5/chapter5-3-chinese.md)
   * [改变容器内容](content/chapter5/chapter5-4-chinese.md)
   * [在有序和无序的vector中查找元素](content/chapter5/chapter5-5-chinese.md)
