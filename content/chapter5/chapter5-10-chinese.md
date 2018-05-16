@@ -22,7 +22,7 @@ std::merge算法就可以直接来帮助我们做这个事情，这样我们就�
    #include <tuple>
    #include <string>
    #include <fstream>
-   
+
    using namespace std; 
    ```
 
@@ -77,7 +77,7 @@ std::merge算法就可以直接来帮助我们做这个事情，这样我们就�
    }
    ```
 
-7. 我们可以编译并运行这个程序，不过在运行之前，我们需要创建dict.txt文件，并且写入如下内容：
+7. 我们可以编译这个程序，不过在运行之前，我们需要创建dict.txt文件，并且写入如下内容：
 
    ```c++
    car auto
@@ -85,9 +85,21 @@ std::merge算法就可以直接来帮助我们做这个事情，这样我们就�
    house haus
    ```
 
-8. 
+8. 现在我们运行程序了，输入一些英文单词，将其翻译为德文。这时的输出仍旧是一个排序后的字典，其可以将输入的所有单词进行翻译。
+
+   ```c++
+   $ echo "table tisch fish fisch dog hund" | ./dictionary_merge
+   car auto
+   cellphone handy
+   dog hund
+   fish fisch
+   house haus
+   table tisch
+   ```
 
 ## How it works...
 
+std::meger算法接受两对begin/end迭代器，这两对迭代器确定了输入范围。这两对迭代器所提供的输入范围也必须是已排序的。第五个参数就是输出容器的迭代器，其接受两段范围合并的元素。
 
+其有一个变体std::inplace_merge。两个算法几乎一样，不过这个变体只需要一对迭代器，并且没有输出，和其名字一样，其会直接在输入范围上进行操作。比如对`{A, C, B, D}`这个序列来说，我们可以将第一个子序列定义为`{A, C}`，第二个子序列定义为`{B, D}`。使用std::inplace_merge算法将两个序列进行合并，其结果为`{A, B, C, D}`。
 
