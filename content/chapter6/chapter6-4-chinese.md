@@ -74,5 +74,27 @@
 
 ## How it works...
 
+本节，我们需要将两个向量放入循环中，然后对不同位置的值计算差值，然后差值进行平方，最后使用std::inner_product将差的平方进行加和。这样，我们可以使用Lambda表达式来完成求差值平方的操作——`[](double a, double b){return pow(a - b), 2}`，这样就可以通过传入不同的参数来计算差值平方。
 
+这里我们可以看下std::inner_product是如何工作的：
+
+```c++
+template<class InIt1, class InIt2, class T, class F, class G>
+T inner_product(InIt1 it1, InIt1 end1, InIt2 it2, T val,
+			   F bin_op1, G bin_op2)
+{
+    while(it1!= end1){
+        val = bin_op1(val, bin_op2(*it1, *it2));
+        ++it1;
+        ++it2;
+    }
+    return value;
+}
+```
+
+算法会接受一对begin/end迭代器作为第一个输入范围，另一个beigin迭代器代表第二个输入范围。在我们的例子中，这些迭代器所指向的是vector，并对这两个vector进行误差和的计算。val是一个初始化值。我们这里将其设置为0.0。然后，算法可以接受两个二元函数，分别为bin_op1和bin_op2。
+
+我们会发现，这个算法与std::accumulate很相似。不过std::accumulate只对一个范围进行操作。当我们将`bin_op2(*it1, *it2)`看做一个迭代器，那么我们可以简单的是用accumulate算法进行计算了。所以，我们可以将std::inner_product看成是带有打包输入范围的std::accumulate。
+
+在我们的例子中，打包函数就是`pow(a - b, 2)`。因为我们需要将所有元素的差平方进行加和，所以我们选择`std::plus<double>`作为bin_op1。
 
