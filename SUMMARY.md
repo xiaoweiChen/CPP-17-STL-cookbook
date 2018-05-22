@@ -58,7 +58,7 @@
   * [使用树实现搜索输入建议生成器](content/chapter6/chapter6-2-chinese.md)
   * [使用STL数值算法实现傅里叶变换](content/chapter6/chapter6-3-chinese.md)
   * [计算两个vector的误差和](content/chapter6/chapter6-4-chinese.md)
-  * [实现ASCII曼德尔布罗特渲染器](content/chapter6/chapter6-5-chinese.md)
+  * [使用ASCII字符曼德尔布罗特集合](content/chapter6/chapter6-5-chinese.md)
   * [实现一个分裂算法](content/chapter6/chapter6-6-chinese.md)
   * [从标准算法中收集有用的算法](content/chapter6/chapter6-7-chinese.md)
   * [删除词组见连续的空格](content/chapter6/chapter6-8-chinese.md)
