@@ -60,7 +60,7 @@
   * [计算两个vector的误差和](content/chapter6/chapter6-4-chinese.md)
   * [使用ASCII字符曼德尔布罗特集合](content/chapter6/chapter6-5-chinese.md)
   * [实现分割算法](content/chapter6/chapter6-6-chinese.md)
-  * [从标准算法中收集有用的算法](content/chapter6/chapter6-7-chinese.md)
+  * [将标准算法进行组合](content/chapter6/chapter6-7-chinese.md)
   * [删除词组见连续的空格](content/chapter6/chapter6-8-chinese.md)
   * [压缩和解压缩字符串](content/chapter6/chapter6-9-chinese.md)
 * [第7章 字符串, 流和正则表达]()
