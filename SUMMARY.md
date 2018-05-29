@@ -66,7 +66,7 @@
 * [第7章 字符串, 流和正则表达](content/chapter7/chapter7-0-chinese.md)
   * [创建、连接和转换字符串](content/chapter7/chapter7-1-chinese.md)
   * [消除字符串开始和结束处的空格](content/chapter7/chapter7-2-chinese.md)
-  * [无需构造std::string，从而提升std::string的体验](content/chapter7/chapter7-3-chinese.md)
+  * [无需构造获取std::string](content/chapter7/chapter7-3-chinese.md)
   * [从用户的输入读取数值](content/chapter7/chapter7-4-chinese.md)
   * [计算文件中所有的词组的数量](content/chapter7/chapter7-5-chinese.md)
   * [控制I/O流格式化输出](content/chapter7/chapter7-6-chinese.md)
