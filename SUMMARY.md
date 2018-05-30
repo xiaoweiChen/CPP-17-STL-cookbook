@@ -69,7 +69,7 @@
   * [无需构造获取std::string](content/chapter7/chapter7-3-chinese.md)
   * [从用户的输入读取数值](content/chapter7/chapter7-4-chinese.md)
   * [计算文件中的单词数量](content/chapter7/chapter7-5-chinese.md)
-  * [控制I/O流格式化输出](content/chapter7/chapter7-6-chinese.md)
+  * [格式化输出](content/chapter7/chapter7-6-chinese.md)
   * [使用输入文件初始化复杂对象](content/chapter7/chapter7-7-chinese.md)
   * [使用std::istream迭代器填充容器](content/chapter7/chapter7-8-chinese.md)
   * [使用std::ostream迭代器进行输出打印](content/chapter7/chapter7-9-chinese.md)
