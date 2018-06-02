@@ -72,7 +72,7 @@
   * [格式化输出](content/chapter7/chapter7-6-chinese.md)
   * [使用输入文件初始化复杂对象](content/chapter7/chapter7-7-chinese.md)
   * [使用std::istream迭代器填充容器](content/chapter7/chapter7-8-chinese.md)
-  * [使用std::ostream迭代器进行输出打印](content/chapter7/chapter7-9-chinese.md)
+  * [使用std::ostream迭代器进行打印](content/chapter7/chapter7-9-chinese.md)
   * [使用特定代码段将输出重定向到文件](content/chapter7/chapter7-10-chinese.md)
   * [通过集成std::char_traits创建自定义字符串类](content/chapter7/chapter7-11-chinese.md)
   * [使用正则表达式库标记输入](content/chapter7/chapter7-12-chinese.md)
