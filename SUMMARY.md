@@ -76,7 +76,7 @@
   * [使用特定代码段将输出重定向到文件](content/chapter7/chapter7-10-chinese.md)
   * [通过集成std::char_traits创建自定义字符串类](content/chapter7/chapter7-11-chinese.md)
   * [使用正则表达式库标记输入](content/chapter7/chapter7-12-chinese.md)
-  * [使用不同的文体打印漂亮的数字](content/chapter7/chapter7-13-chinese.md)
+  * [简单打印不同格式的数字](content/chapter7/chapter7-13-chinese.md)
   * [从std::iostream错误中获取可读异常](content/chapter7/chapter7-14-chinese.md)
 * [第8章 工具类]()
   * [使用std::ratio转换不同时间单位的时间]()
