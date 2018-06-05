@@ -79,7 +79,7 @@
   * [简单打印不同格式的数字](content/chapter7/chapter7-13-chinese.md)
   * [从std::iostream错误中获取可读异常](content/chapter7/chapter7-14-chinese.md)
 * [第8章 工具类](content/chapter8/chapter8-0-chinese.md)
-  * [使用std::ratio转换不同时间单位的时间](content/chapter8/chapter8-1-chinese.md)
+  * [使用std::ratio转换不同时间的单位](content/chapter8/chapter8-1-chinese.md)
   * [使用std::chrono在绝对时间和相对时间间转换](content/chapter8/chapter8-2-chinese.md)
   * [使用std::optional安全的标识失败](content/chapter8/chapter8-3-chinese.md)
   * [元组中使用函数](content/chapter8/chapter8-4-chinese.md)
