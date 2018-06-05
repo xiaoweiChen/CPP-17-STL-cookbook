@@ -143,7 +143,41 @@
 
 当我们要衡量时间的距离，或者计算两个时间点的绝对间隔。即便时钟是112年，5小时，10分钟，1秒(或其他)之后，或之前的时间，这都不影响两个时间点间的相对距离。这里我们唯一关注的就是打的两个时间点toc和tic，这里的时钟需要是微秒级别的(许多系统都使用这样的时钟)，因为不同的时钟对于我们的测量有一定的影响。对于这样的需求，steady_clock无疑是最佳的选择。其能根据处理器的时间戳计数器进行实现，只要该时钟开始计数(系统开始运行)就不会停止。
 
-OK，现在来对合适的时间对象进行选择，我们可以通过`chrono::steady_clock::now()`对时间点进行保存。now函数会返回一个`chrono::time_point<chrono::steady_clock>`类的值。
+OK，现在来对合适的时间对象进行选择，我们可以通过`chrono::steady_clock::now()`对时间点进行保存。now函数会返回一个`chrono::time_point<chrono::steady_clock>`类的值。两个点之间的差就是所用时间间隔，或chrono::duration类型的时间长度。这个类型是本节的核心类型，其看起来有点复杂。让我么来看一下duration模板类的签名：
+
+```c++
+template<
+    class Rep,
+    class Period = std::ratio<1>
+> class duration;
+```
+
+我们需要改变的参数类为Rep和Period。Rep很容易解释：其只是一个数值类型用来保存时间点的值。对于已经存在的STL时间单位，都为long long int型。本节中，我们选择了double。因为我们的选择，我们保存的时间描述也可以转换为毫秒或微秒。当chrono::seconds类型记录的时间为1.2345秒时，其会舍入成一个整数秒数。这样，我们就能使用chrono::microseconds来保存tic和toc之间的时间，并且将其转化为粒度更加大的时间。正因为我们选择double作为Rep传入，我们可以对计时的精度在丢失较少精度的情况下，进行向上或向下的调整。
+
+对于我们的计时单位，我们采取了Rep = double方式，所以我们会在Period上有不同的选择：
+
+```c++
+using seconds = chrono::duration<double>;
+using milliseconds = chrono::duration<double,
+	ratio_multiply<seconds::period, milli>>;
+using microseconds = chrono::duration<double,
+	ratio_multiply<seconds::period, micro>>;
+```
+
+ seconds是最简单的时间单位，其为`Period = ratio<1>`，其他的时间单位就只能进行转换。1毫秒是千分之一秒，所以我们在将使用milli特化的seconds::period转化为秒时，就要使用`std::ratio<1, 1000>`类型(`std::ratio<a, b>`表示分数值a/b)。ratio_multiply类型是一个编译时函数，其表示对应类型的结果是多个ratio值累加。
+
+可能这看起来非常复杂，那就让我们来看一个例子吧：`ratio_multiply<ratio<2, 3>, ratio<4, 5>>`的结果为`ratio<8, 15>`，因为`(2/3) * (4/5) = 8/15`。
+
+我们结果类型定义等价情况如下：
+
+```c++
+using seconds = chrono::duration<double, ratio<1, 1>>;
+using milliseconds = chrono::duration<double, ratio<1, 1000>>;
+using microseconds = chrono::duration<double, ratio<1, 1000000>>;
+```
+
+上面列出的类型，很容易的就能进行转换。当我们具有一个时间间隔d，其类型为seconds，我们就能将其转换成milliseconds。转换只需要通过构造函数就能完成——milliseconds(d)。
 
 ## There's more...
 
+在其他教程和书中，你可以会看到使用duration_cast的方式对时间进行转换。当我们具有一个时间间隔类chrono::milliseconds和要装换成的类型chrono::hours时，我们就需要转换`duration_cast<chrono::hours>(milliseconds_value)`，因为这些时间单位都是整型。从一个细粒度的时间单位，转换成一个粗粒度的时间单位，将会带来时间精度的损失，这也是为什么我们使用duration_cast的原因。对于基于double和float的时间间隔类型，就不需要进行强制转换了。
