@@ -1,4 +1,4 @@
-# 使用std::priority_queue实现个人待办事项列表
+# 实现个人待办事项列表——std::priority_queue
 
 std::priority_queue是另一种适配容器(类似于std::stack)。其实为另一种数据结构的包装器(默认的数据结构为std::vector)，并且提供类似队列的接口。同样也遵循队列的特性，先进先出。这与我们之前使用的std::stack完全不同。
 

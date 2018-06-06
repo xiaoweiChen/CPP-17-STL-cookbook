@@ -1,2 +1,2 @@
-# 使用std::shared_ptr处理共享堆内存
+# 处理共享堆内存——std::shared_ptr
 

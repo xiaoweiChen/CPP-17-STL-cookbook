@@ -1,2 +1,2 @@
-# 使用std::unique_ptr自动化管理资源
+# 自动化管理资源——std::unique_ptr
 
