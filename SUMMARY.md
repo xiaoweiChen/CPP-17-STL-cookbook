@@ -82,7 +82,7 @@
   * [转换不同的时间单位——std::ratio](content/chapter8/chapter8-1-chinese.md)
   * [转换绝对时间和相对时间——std::chrono](content/chapter8/chapter8-2-chinese.md)
   * [安全的标识失败——std::optional](content/chapter8/chapter8-3-chinese.md)
-  * [元组中使用函数](content/chapter8/chapter8-4-chinese.md)
+  * [对元组使用函数](content/chapter8/chapter8-4-chinese.md)
   * [使用元组快速构成数据结构](content/chapter8/chapter8-5-chinese.md)
   * [将`void*`替换为更为安全的std::any](content/chapter8/chapter8-6-chinese.md)
   * [存储不同的类型——std::variant](content/chapter8/chapter8-7-chinese.md)
