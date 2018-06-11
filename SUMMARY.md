@@ -88,7 +88,7 @@
   * [存储不同的类型——std::variant](content/chapter8/chapter8-7-chinese.md)
   * [自动化管理资源——std::unique_ptr](content/chapter8/chapter8-8-chinese.md)
   * [处理共享堆内存——std::shared_ptr](content/chapter8/chapter8-9-chinese.md)
-  * [处理对共享对象的弱指针](content/chapter8/chapter8-10-chinese.md)
+  * [对共享对象使用弱指针](content/chapter8/chapter8-10-chinese.md)
   * [使用智能指针简化处理遗留API](content/chapter8/chapter8-11-chinese.md)
   * [共享同一对象的不同成员](content/chapter8/chapter8-12-chinese.md)
   * [生成随机数和选择合适的随机数引擎](content/chapter8/chapter8-13-chinese.md)
