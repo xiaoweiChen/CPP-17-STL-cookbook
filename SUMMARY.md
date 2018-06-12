@@ -91,7 +91,7 @@
   * [对共享对象使用弱指针](content/chapter8/chapter8-10-chinese.md)
   * [使用智能指针简化处理遗留API](content/chapter8/chapter8-11-chinese.md)
   * [共享同一对象的不同成员](content/chapter8/chapter8-12-chinese.md)
-  * [和选择合适的引擎生成随机数](content/chapter8/chapter8-13-chinese.md)
+  * [选择合适的引擎生成随机数](content/chapter8/chapter8-13-chinese.md)
   * [让STL以指定分布方式产生随机数](content/chapter8/chapter8-14-chinese.md)
 * [第9章 并行和并发]()
   * [使用标准算法的自动化并行代码]()
