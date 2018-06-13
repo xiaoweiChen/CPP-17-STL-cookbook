@@ -128,7 +128,7 @@ STL包括超过10中分布算法，能用来指定随机数的生成方式。本
         print_distro(std::bernoulli_distribution{0.75}, samples);
         
     	cout << "discrete_distribution\n";
-        print_distro(discrete_distribution<int>{{1, 2, 4, 8}}, samples);
+        print_distro(discrete_distribution<int>{ {1, 2, 4, 8} }, samples);
     ```
 
 12. 不同分布引擎之间有很大的不同。其都非常特殊，也都在特定环境下非常有用。当你没有听说过这些分布，应该对其特性不是特别的了解。不过，在我们的程序中会生成非常漂亮的直方图，通过我们的打印图，你会对这些分布有所了解：
