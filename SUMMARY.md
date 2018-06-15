@@ -94,7 +94,7 @@
   * [选择合适的引擎生成随机数](content/chapter8/chapter8-13-chinese.md)
   * [让STL以指定分布方式产生随机数](content/chapter8/chapter8-14-chinese.md)
 * [第9章 并行和并发](content/chapter9/chapter9-0-chinese.md)
-  * [使用标准算法的自动化并行代码](content/chapter9/chapter9-1-chinese.md)
+  * [标准算法的自动并行](content/chapter9/chapter9-1-chinese.md)
   * [安排特定时间让程序休眠](content/chapter9/chapter9-2-chinese.md)
   * [启动和停止线程](content/chapter9/chapter9-3-chinese.md)
   * [打造异常安全的共享锁——std::unique_lock和std::shared_lock](content/chapter9/chapter9-4-chinese.md)
