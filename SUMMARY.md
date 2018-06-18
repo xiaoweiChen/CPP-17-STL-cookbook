@@ -99,7 +99,7 @@
   * [启动和停止线程](content/chapter9/chapter9-3-chinese.md)
   * [打造异常安全的共享锁——std::unique_lock和std::shared_lock](content/chapter9/chapter9-4-chinese.md)
   * [避免死锁——std::scoped_lock](content/chapter9/chapter9-5-chinese.md)
-  * [同步并行中std::cout的使用](content/chapter9/chapter9-6-chinese.md)
+  * [同步并行中使用std::cout](content/chapter9/chapter9-6-chinese.md)
   * [进行延迟初始化——std::call_once](content/chapter9/chapter9-7-chinese.md)
   * [将执行的程序推到后台——std::async](content/chapter9/chapter9-8-chinese.md)
   * [实现生产者/消费者模型——std::condition_variable](content/chapter9/chapter9-9-chinese.md)
