@@ -107,19 +107,19 @@ C++11之后，我们有了`std::async`，就能帮我们完成这项任务。我
 8. 编译并运行代码，就能得到如下的输出。我们使用一个简短的字符串的例子时，代码并不是真正的在并行，但这个例子中，我们能确保代码是并发的。另外，程序的结构与串行版本相比，并没有改变多少：
 
     ```c++
-   $ echo "foo bar baz foobazinga" | ./async
-   : 3
-   a: 4
-   b: 3
-   f: 2
-   g: 1
-   i: 1
-   n: 1
-   o: 4
-   r: 1
-   z: 2
-   Sorted string: " aaaabbbffginoooorzz"
-   Total vowels: 9
+      $ echo "foo bar baz foobazinga" | ./async
+      : 3
+      a: 4
+      b: 3
+      f: 2
+      g: 1
+      i: 1
+      n: 1
+      o: 4
+      r: 1
+      z: 2
+      Sorted string: " aaaabbbffginoooorzz"
+      Total vowels: 9
     ```
 
 ## How it works...
@@ -155,9 +155,45 @@ cout << "Sorted string: "
     << vowel_count.get() << '\n';
 ```
 
+例如`histogram`函数则会返回一个map实例，`async(..., histogram, ...)`会将返回给我们的map实例包装进之前就准备好的`future`对象中。`future`对象时一种空的占位符，直到线程执行完函数返回时，其才有具体的值。结果map将会返回到`future`对象中，所以我们可以对其进行访问。`get`函数将能让我们访问到被包装起来的结果。
 
+让我们来看一个更加简单的例子。看一下下面的代码：
 
+```c++
+auto x (f(1, 2, 3));
+cout << x;
+```
 
+与之前的代码相比，我们也可以以下面的方式完成代码：
+
+```c++
+auto x (async(launch::async, f, 1, 2, 3));
+cout << x.get();
+```
+
+这是最基本的。在后台执行的方式可能要比标准C++出现还要早。当然，还有一个问题要解决：`launch::async`是什么东西？` launch::async`是一个用来定义执行策略的标识。其有两种独立方式和一种组合方式：
+
+| 策略选择                                                     | 意义                                                         |
+| ------------------------------------------------------------ | ------------------------------------------------------------ |
+| [launch::async](http://zh.cppreference.com/w/cpp/thread/launch) | 运行新线程，以异步执行任务                                   |
+| [launch::deferred](http://zh.cppreference.com/w/cpp/thread/launch) | 在调用线程上执行任务(惰性求值)。在对future调用get和wait的时候，才进行执行。如果什么都没有发生，那么执行函数就没有运行。 |
+| launch::async \| launch::deferred                            | 具有两种策略共同的特性，STL的`async`实现可以的选择策略。当没有提供策略时，这种策略就作为默认的选择。 |
+
+> Note：
+>
+> 不使用策略参数调用`async(f, 1, 2, 3)`，我们将会选择都是用的策略。`async`的实现可以自由的选择策略。这也就意味着，我们不能确定任务会执行在一个新的线程上，还是执行在当前线程上。
 
 ## There's more...
 
+还有件事情我们必须要知道。假设我们写了如下的代码：
+
+```c++
+async(launch::async, f);
+async(launch::async, g);
+```
+
+这就会让f和g函数并发执行(这个例子中，我们并不关心其返回值)。运行这段代码时，我们会注意到代码会阻塞在这两个调用上，这是我们并不想看到的情况。
+
+所以，为什么会阻塞呢？`async`不是非阻塞式、异步的调用吗？没错，不过这里有点特殊：当对一个`async`使用`launch::async`策略时，获取一个`future`对象，之后其析构函数将会以阻塞式等待方式运行。
+
+这也就意味着，这两次调用阻塞的原因就是，`future`生命周期只有一行的时间！我们可以以获取其返回值的方式，来避免这个问题，从而让`future`对象的生命周期更长。
