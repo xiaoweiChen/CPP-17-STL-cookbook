@@ -108,15 +108,15 @@
 
 10. 商品被消费之后，我们将会提醒生产者，并进入130毫秒的休眠状态，这个时间用来模拟消费时间：
 
-    ```c++
-                go_produce.notify_all();
-                this_thread::sleep_for(130ms);
-            }
-        }
-    
-        pcout{} << "EXIT: Producer " << id << '\n';
-    }
-    ```
+   ```c++
+               go_produce.notify_all();
+               this_thread::sleep_for(130ms);
+           }
+       }
+   
+       pcout{} << "EXIT: Producer " << id << '\n';
+   }
+   ```
 
 11. 主函数中，我们对工作线程和消费线程各自创建一个vector:
 
@@ -148,11 +148,65 @@
     }
     ```
 
-14. 编译并运行程序，我们将获得如下的输出。这个输出特别长，我们进行了截断。我们能看到生产者偶尔会休息一下，并且消费者会消费掉对应的商品，直到再次生产。
+14. 编译并运行程序，我们将获得如下的输出。这个输出特别长，我们进行了截断。我们能看到生产者偶尔会休息一下，并且消费者会消费掉对应的商品，直到再次生产。若是将生产者/消费者的休眠时间进行修改，则会得到完全不一样的结果：
 
-
-
-
+    ```c++
+    $ ./multi_producer_consumer
+    Producer 0 --> item 0
+    Producer 1 --> item 100
+    item 0 --> Consumer 0
+    Producer 2 --> item 200
+    item 100 --> Consumer 1
+    item 200 --> Consumer 2
+    Producer 0 --> item 1
+    Producer 1 --> item 101
+    item 1 --> Consumer 0
+    ...
+    Producer 0 --> item14
+    EXIT: Producer 0
+    Producer 1 --> item 114
+    EXIT: Producer 1
+    item14 --> Consumer 0
+    Producer 2 --> item 214
+    EXIT: Producer 2
+    item 114 --> Consumer 1
+    item 214 --> Consumer 2
+    EXIT: Consumer 2
+    EXIT: Consumer 3
+    EXIT: Consumer 4
+    EXIT: Consumer 0
+    EXIT: Consumer 1
+    ```
 
 ## How it works...
 
+这节可以作为之前章节的扩展。与单生产者和消费者不同，我们实现了M个生产者和N个消费者之间的同步。因此，程序中不是消费者因为队列中没有商品而等待，就是因为队列中囤积了太多商品，而让生产者等待。
+
+当有多个消费者等待同一个队列中出现新的商品时，程序的模式就又和单生产者/消费者工作的模式相同了。当有一个线程对保护队列的互斥量上锁时，然后对货物进行添加或减少，这样代码就是安全的。这样的话，无论有多少线程在同时等待这个所，对于我们来说都无所谓。生产者也同理，其中最重要的就是，队列不允许两个及两个以上的线程进行访问。
+
+比单生产者/消费者原理复杂的原因在于，当商品的数量在队列中囤积到一定程度，我们将会让生产者线程停止。为了迎合这个需求，我们使用两个不同的`condition_variable`：
+
+1. `go_produce`表示队列没有被填满，并且生产者会继续生产，而后将商品放置在队列中。
+2. `go_consume`表示队列已经填满，消费者可以继续消费。
+
+这样，生产者会将队列用货物填满，并且`go_consume`会用如下代码，提醒消费者线程：
+
+```c++
+if (go_consume.wait_for(lock, 1s, [] { return !q.empty(); })) {
+	// got the event without timeout
+}
+```
+
+生产者也会进行等待，直到可以再次生产：
+
+```c++
+go_produce.wait(lock, [&] { return q.size() < stock; });
+```
+
+还有一个细节就是我们不会让消费者线程等太久。在对`go_consume.wait_for`的调用中，我们添加了超时参数，并且设置为1秒。这对于消费者来说是一种退出机制：当队列为空的状态持续多于1秒，那么就可能没有生产者在工作。
+
+这个处理起来很简单，代码会尽可能让队列中商品的数量达到阈值的上限。更复杂的程序中，当商品的数量为阈值上限的一半时，消费者线程会对生产者线程进行提醒。这样生产者就会在队列为空前继续生产。
+
+` condition_variable`帮助我们完美的解决了一个问题：当一个消费者触发了`go_produce`的提醒，那么将会有很多生产者竞争的去生产下一个商品。如果只需要生产一个商品，那么只需要一个生成者就好。当`go_produce`被触发时，所有生产者都争相生产这一个商品，我们将会看到的情况就是商品在队列中的数量超过了阈值的上限。
+
+我们试想一下这种情况，我们有(max - 1)个商品在队列中，并且想在要一个商品将队列填满。不论是一个消费者线程调用了`go_produce.notify_one()`(这会只叫醒一个等待线程)或` go_produce.notify_all()`(这会叫醒所有等待的线程)，我们都需要保证只有一个生产者线程调用了`go_produce.wait`，因为对于其他生成这线程来说，一旦互斥锁解锁，那么`q.size() < stock`(stock货物阈值上限)的条件将立即不复存在。
