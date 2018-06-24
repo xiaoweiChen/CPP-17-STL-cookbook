@@ -32,7 +32,7 @@
 
 如果最近你阅读了本书中C++17的新特性，并使用前卫的编译器编译了这些代码，你可能会在编译阶段遇到一些问题。因为你使用到的一些C++17 STL新特性可能还没有在编译器中进行实现。
 
-While writing this book, it was necessary to add the path prefix 写这本书时，需要给`<execution_policy>` 和`<filesystem>`头文件添加前缀`experimental/` 。其会将你将是用到的一些STL算法、数值等等包含入你的代码中，不过这也取决于编译器标准库的更新程度和稳定性。
+运行本书代码时，需要给`<execution_policy>` 和`<filesystem>`头文件添加前缀`experimental/` 。其会将你将是用到的一些STL算法、数值等等包含入你的代码中，不过这也取决于编译器标准库的更新程度和稳定性。
 
 这同样使用于命名空间的新特性。标准库中，实验部分的实现并不在`std`命名空间中，而是在`std::experimental`中。
 
