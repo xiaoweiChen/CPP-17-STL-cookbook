@@ -2,11 +2,11 @@
 
 当测试代码需要处理参数顺序不重要的输入序列时，有必要测试它是否对所有可能的输入产生相同的输出。当你自己实现了一个排序算法时，你就要写这样的测试代码来确定自己的实现是否正确。
 
-std::next_permutation在任何时候都能帮我们将序列进行打乱。我们在可修改的范围中可以调用它，其会将以字典序进行置换。
+`std::next_permutation`在任何时候都能帮我们将序列进行打乱。我们在可修改的范围中可以调用它，其会将以字典序进行置换。
 
 ## How to do it...
 
-本节，我们将从标准输入中读取多个字符串，然后我们会使用std::next_permutation生成已排序的序列，并且打印这个序列：
+本节中，我们将从标准输入中读取多个字符串，然后我们会使用`std::next_permutation`生成已排序的序列，并且打印这个序列：
 
 1. 首先包含必要的头文件，并且声明所使用的命名空间。
 
@@ -20,7 +20,7 @@ std::next_permutation在任何时候都能帮我们将序列进行打乱。我�
    using namespace std; 
    ```
 
-2. 这里使用标准数组对vector进行初始化。接下来对vector进行排序：
+2. 这里使用标准数组对`vector`进行初始化。接下来对`vector`进行排序：
 
    ```c++
    int main()
@@ -29,7 +29,7 @@ std::next_permutation在任何时候都能帮我们将序列进行打乱。我�
        sort(begin(v), end(v));
    ```
 
-3. 现在我们来打印vector中的内容。随后，我们会调用std::next_permutation。其会打乱已经排序的vector，然后再对其进行打印。直到 next_permutation返回false时，代表 next_permutation完成了其操作，循环结束：
+3. 现在我们来打印`vector`中的内容。随后，我们会调用`std::next_permutation`。其会打乱已经排序的`vector`，然后再对其进行打印。直到`next_permutation`返回false时，代表`next_permutation`完成了其操作，循环结束：
 
    ```c++
        do {
@@ -54,9 +54,9 @@ std::next_permutation在任何时候都能帮我们将序列进行打乱。我�
 
 ## How it works...
 
- std::next_permutation算法使用起来有点奇怪。这是因为这个函数接受一组开始/结束迭代器，当其找到下一个置换时返回true；否则，返回false。不过“下一个置换”又是什么意思呢？
+`std::next_permutation`算法使用起来有点奇怪。这是因为这个函数接受一组开始/结束迭代器，当其找到下一个置换时返回true；否则，返回false。不过“下一个置换”又是什么意思呢？
 
-当std::next_permutation算法找到元素中的下一个字典序时，其会以如下方式工作：
+当`std::next_permutation`算法找到元素中的下一个字典序时，其会以如下方式工作：
 
 1. 通过`v[i - 1] < v[i]`的方式找到最大索引i。如果这个最大索引不存在，那么返回false。
 2. 再找到最大所以j，这里j需要大于等于i，并且`v[j] > v[i - 1]`。
