@@ -21,13 +21,13 @@ csignal fourier_transform(const csignal &s) {
 }
 ```
 
-这里csignal的类型可能是std::vector，其每个元素都是一个复数。对于复数而言，STL中已经有了对应的数据结构可以对其进行表示——std::complex。std::polar函数计算得是`exp(-2 * i * ...)`部分。
+这里`csignal`的类型可能是`std::vector`，其每个元素都是一个复数。对于复数而言，STL中已经有了对应的数据结构可以对其进行表示——`std::complex`。`std::polar`函数计算得是`exp(-2 * i * ...)`部分。
 
 这样实现看起来也挺好，不过本节中我们将使用STL工具对其进行实现。
 
 ## How to do it...
 
-本节，我们将实现傅里叶变换和逆变换，然后我们会对一些信号进行转换：
+本节中，我们将实现傅里叶变换和逆变换，然后我们会对一些信号进行转换：
 
 1. 首先，包含必要的头文件和声明所使用的命名空间：
 
@@ -44,7 +44,7 @@ csignal fourier_transform(const csignal &s) {
    using namespace std;
    ```
 
-2. 信号点的值一个复数，我们使用std::complex来表示，并使用double进行特化。我们可以对类型进行别名操作，使用cmple表示两个double值，这两个double值分别表示复数的实部和虚部。使用csdignal来别名相应的vector对象：
+2. 信号点的值一个复数，我们使用`std::complex`来表示，并使用`double`进行特化。我们可以对类型进行别名操作，使用`cmple`表示两个`double`值，这两个`double`值分别表示复数的实部和虚部。使用`csdignal`来别名相应的`vector`对象：
 
    ```c++
    using cmplx = complex<double>;
@@ -87,7 +87,7 @@ csignal fourier_transform(const csignal &s) {
    	const double div {back ? 1.0 : double(s.size())};
    ```
 
-6. std::accumulate很适合用来执行公式中的累加部分。我们将对一个范围内的数值使用accumulate。对于每个值，我们将逐步的进行单个相加。std::accumulate算法会调用一个二元函数。该函数的第一个参数为目前为止我们所累加的变量sum，第二个参数为范围内下一个要累加的值。我们会在信号s中对当前为止的值进行查找，并且会将其和复数因子pol相乘。然后，我们返回新的sum。这里的二元函数，使用Lambda表达式进行包装，因为我么将在每次accumulate的调用时，j变量的值是不同的。因为其是二维循环算法，所以内层Lambda做内部的循环，外城Lambda做外层的循环：
+6. `std::accumulate`很适合用来执行公式中的累加部分。我们将对一个范围内的数值使用`accumulate`。对于每个值，我们将逐步的进行单个相加。`std::accumulate`算法会调用一个二元函数。该函数的第一个参数为目前为止我们所累加的变量sum，第二个参数为范围内下一个要累加的值。我们会在信号s中对当前为止的值进行查找，并且会将其和复数因子pol相乘。然后，我们返回新的sum。这里的二元函数，使用Lambda表达式进行包装，因为我么将在每次`accumulate`的调用时，j变量的值是不同的。因为其是二维循环算法，所以内层Lambda做内部的循环，外城Lambda做外层的循环：
 
    ```c++
        auto sum_up ([=, &s] (size_t j) {
@@ -98,7 +98,7 @@ csignal fourier_transform(const csignal &s) {
        });
    ```
 
-7. 傅里叶的内部循环，现在使用std::accumulate进行。算法中每个位置，我们都会进行加和。我们使用Lambda表达式来实现，这样我们就能计算出傅里叶变换数组中的每个数据点的值：
+7. 傅里叶的内部循环，现在使用`std::accumulate`进行。算法中每个位置，我们都会进行加和。我们使用Lambda表达式来实现，这样我们就能计算出傅里叶变换数组中的每个数据点的值：
 
    ```c++
    	auto to_ft ([=, &s](size_t j){
@@ -110,7 +110,7 @@ csignal fourier_transform(const csignal &s) {
        });
    ```
 
-8. 目前位置，我们还没有执行傅里叶变换的代码。我们会准备大量的功能性代码，他们会帮助我们完成很多事情。std::transform的调用将会使j的值在[0, N)间变换(这步是在外层循环完成)。变换之后的值将全部放入t中，t就是我们要返回给用户的值：
+8. 目前位置，我们还没有执行傅里叶变换的代码。我们会准备大量的功能性代码，他们会帮助我们完成很多事情。`std::transform`的调用将会使j的值在[0, N)间变换(这步是在外层循环完成)。变换之后的值将全部放入t中，t就是我们要返回给用户的值：
 
    ```c++
        transform(num_iterator{0}, num_iterator{s.size()},
@@ -119,7 +119,7 @@ csignal fourier_transform(const csignal &s) {
    }
    ```
 
-9. 我们将会实现一些辅助函数帮助我们生成信号。首先实现的是一个余弦信号生成器。其会返回一个Lambda表达式，这个表达式通过传入的长度参数，产生对应长度的余弦信号数据。信号本身的长度是不固定的，但是其有固定的周期。周期为N，意味着该信号会在N步之后重复。返回的Lambda表达式不接受任何参数。我们可以重读的对其进行调用，并且每次调用表达式将会返回给我们下一个时间点的信号值：
+9. 我们将会实现一些辅助函数帮助我们生成信号。首先实现的是一个余弦信号生成器。其会返回一个Lambda表达式，这个表达式通过传入的长度参数，产生对应长度的余弦信号数据。信号本身的长度是不固定的，但是其有固定的周期。周期为N，意味着该信号会在N步之后重复。返回的Lambda表达式不接受任何参数。我们可以重复的对其进行调用，并且每次调用表达式将会返回给我们下一个时间点的信号值：
 
    ```c++
    static auto gen_cosine (size_t period_len){
@@ -129,7 +129,7 @@ csignal fourier_transform(const csignal &s) {
    }
    ```
 
-10. 我们所要生成另一个波形是方波。该波形会在-1和+1两值间震荡，其中不会有其他的值。公式看起来有点复杂，但是其变换非常简单，也就是将值n置为+1或-1，并且其震荡周期为period_len。这里要注意，我们没有使用0对n进行初始化。这样，我们的方波的其实位置就在+1上：
+10. 我们所要生成另一个波形是方波。该波形会在`-1`和`+1`两值间震荡，其中不会有其他的值。公式看起来有点复杂，但是其变换非常简单，也就是将值n置为`+1`或`-1`，并且其震荡周期为`period_len`。这里要注意，我们没有使用0对n进行初始化。这样，我们的方波的其实位置就在`+1`上：
 
     ```c++
     static auto gen_square_wave (size_t period_len)
@@ -140,7 +140,7 @@ csignal fourier_transform(const csignal &s) {
     }
     ```
 
-11. 产生实际信号可以通过vector和信号生成器联合进行，使用重复调用信号生成器对vector数组进行填充。std::generate就用来完成这个任务的。其接受一组begin/end迭代器组和一个生成函数。对于每个合法的迭代器，都会进行`*it = gen()`。通过将这些代码包装陈搞一个函数，我们可以很容器的生成一个信号数组：
+11. 产生实际信号可以通过`vector`和信号生成器联合进行，使用重复调用信号生成器对`vector`数组进行填充。`std::generate`就用来完成这个任务的。其接受一组`begin/end`迭代器组和一个生成函数。对于每个合法的迭代器，都会进行`*it = gen()`。通过将这些代码包装成一个函数，我们可以很容易的生成一个信号数组：
 
     ```c++
     template <typename F>
@@ -152,7 +152,7 @@ csignal fourier_transform(const csignal &s) {
     }
     ```
 
-12. 最后，我们需要将信号的结果进行打印。我们可以将数组中的值考别到输出流迭代器中进行输出，不过我们需要先将数据进行变换，因为我们的信号数据都是复数对。这样，我们只需要在意每个点的实部就好；所以，我们可以将数组扔到std::transform中进行变换，然后将实部提取出来：
+12. 最后，我们需要将信号的结果进行打印。我们可以将数组中的值拷贝到输出流迭代器中进行输出，不过我们需要先将数据进行变换，因为我们的信号数据都是复数对。这样，我们只需要在意每个点的实部就好；所以，我们可以将数组扔到`std::transform`中进行变换，然后将实部提取出来：
 
     ```c++
     static void print_signal (const csignal &s)
@@ -182,7 +182,7 @@ csignal fourier_transform(const csignal &s) {
             gen_square_wave(sig_len / 2)));
     ```
 
-15. 那么现在有了两个波形信号。为了生成第三个信号，我们对方波信号进行傅里叶变换，并且保存在trans_sqw数组中。方波的傅里叶变换有些特殊，我们在后面会进行介绍。索引从10到(signal_length - 10)都设置为0.0。这部分是触及不到的。经过傅里叶变换之后，原始信号将发生很大的变化。我们将在最后看到结果：
+15. 那么现在有了两个波形信号。为了生成第三个信号，我们对方波信号进行傅里叶变换，并且保存在`trans_sqw`数组中。方波的傅里叶变换有些特殊，我们在后面会进行介绍。索引从10到(signal_length - 10)都设置为0.0。这部分是触及不到的。经过傅里叶变换之后，原始信号将发生很大的变化。我们将在最后看到结果：
 
     ```c++
         auto trans_sqw (fourier_transform(square_wave));
@@ -223,7 +223,7 @@ for (size_t k {0}; k < s.size(); ++k) {
 }
 ```
 
-基于STL算法std::transform和std::accumulate，我们完成了自己的例子，总结一下就类似如下的伪代码：
+基于STL算法`std::transform`和`std::accumulate`，我们完成了自己的例子，总结一下就类似如下的伪代码：
 
 ```
 transform(num_iterator{0}, num_iterator{s.size()}, ...
@@ -233,7 +233,7 @@ transform(num_iterator{0}, num_iterator{s.size()}, ...
 
 和循环相比，结果完全一样。当然，使用STL算法也可以产生不太好的代码。不管怎么样吧，这个实现是不依赖所选用的数据结构。其对于列表也起作用(虽然这没有太大的意义)。另一个好处是，在C++17中STL很容易并行(将在本书的另一个章节进行介绍)，当需要并行的时候，我们就需要对纯循环进行重构和拆分，将其放入指定的线程中(除非使用类似OpenMP这样的并发库，其会自动的将循环进行重构)。
 
-下一个难点是信号生成。让我来看一下另一个gen_cosine:
+下一个难点是信号生成。让我来看一下另一个`gen_cosine`:
 
 ```c++
 static auto gen_cosine (size_t period_len)
@@ -244,7 +244,7 @@ static auto gen_cosine (size_t period_len)
 }
 ```
 
-每一个Lambda表达式代表一个函数对象，其会在每次调用时改变自身的状态。其状态包含两个变量period_len和n。变量n会在每次调用时，进行变更。在不同的时间点上，得到的是不同的信号值，并且在时间增加时会使用`n++`对n的值进行更新。为了获得信号值的数组，我们创建了辅助函数signal_from_generator：
+每一个Lambda表达式代表一个函数对象，其会在每次调用时改变自身的状态。其状态包含两个变量`period_len`和`n`。变量n会在每次调用时，进行变更。在不同的时间点上，得到的是不同的信号值，并且在时间增加时会使用`n++`对n的值进行更新。为了获得信号值的数组，我们创建了辅助函数`signal_from_generator`：
 
 ```c++
 template <typename F>
@@ -256,7 +256,7 @@ static auto signal_from_generator(size_t len, F gen)
 }
 ```
 
-这个函数会通过所选长度创建一个信号vector，并且调用std::generate对数据点进行填充。数组r中的每一个元素，都会调用一个gen函数。gen函数是是一种自修改函数对象，我们使用相同的方式创建了gen_cosine对象。
+这个函数会通过所选长度创建一个信号`vector`，并且调用`std::generate`对数据点进行填充。数组r中的每一个元素，都会调用一个gen函数。gen函数是是一种自修改函数对象，我们使用相同的方式创建了`gen_cosine`对象。
 
 > Note：
 >
