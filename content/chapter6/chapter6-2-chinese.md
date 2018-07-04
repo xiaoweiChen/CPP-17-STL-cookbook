@@ -8,7 +8,7 @@
 
 ## How to do it...
 
-本节，我么将实现一个终端应用，其能接受输入，并且能对所要查找的内容进行猜测，当然猜测的依据是我们用文本完成的“数据库”。
+本节中，我们将实现一个终端应用，其能接受输入，并且能对所要查找的内容进行猜测，当然猜测的依据是我们用文本完成的“数据库”。
 
 1. 包含必要的头文件和声明所使用的命名空间：
 
@@ -23,7 +23,7 @@
    #include <string>
    #include <sstream>
    #include <fstream>
-
+   
    using namespace std;
    ```
 
@@ -40,7 +40,7 @@
    		if (it == end_it) { return; }
    		tries[*it].insert(next(it), end_it);
    	}
-
+   
        template <typename C>
    	void insert(const C &container) {
    		insert(begin(container), end(container));
@@ -74,7 +74,7 @@
    		if (it == end_it) { return ref(*this); }
    		auto found (tries.find(*it));
    		if (found == end(tries)) { return {}; }
-
+   
            return found->second.subtrie(next(it), end_it);
    	}
        
@@ -136,7 +136,7 @@
    }
    ```
 
-8. 在运行程序之前，我们需要将db.txt文件进行设置。查找的输入可以是任何字符，并且其不确保是已经排过序的。进入trie类的所有语句：
+8. 运行程序之前，我们需要将db.txt文件进行设置。查找的输入可以是任何字符，并且其不确保是已经排过序的。进入trie类的所有语句：
 
    ```c++
    do ghosts exist
@@ -180,7 +180,7 @@
 
 10. 编译并运行程序，然后进行输入查找：
 
-     ```c++
+    ```c++
     $ ./word_suggestion
     Next input please:
     > what would
@@ -199,8 +199,7 @@
     ----------------
     Next input please:
     >
-     ```
-
+    ```
 ## How it works...
 
 trie是如何工作的，已经在上一节中介绍过了，不过本节我们对其进行填充和查找的过程看起来有些奇怪。让我们来仔细观察一下代码片段，其使用文本数据库文件对空trie类进行填充：
@@ -213,12 +212,12 @@ for (string line; getline(infile, line);) {
 }
 ```
 
-这段代码会逐行的将文本文件中的内容读取出来。然后，我们将字符串拷贝到一个istringstream对象中。我们可以根据输入流对象，创建一个istring_iterator迭代器，其能帮助我们查找子trie。这样，我们就不需要将字符串放入vector或list中了。上述代码中，有一段不必要的内存分配，可以使用移动方式，将line中的内容移动到iss中，避免不必要的内存分配。不过，std::istringstream没有提供构造函数，所以只能键std::string中的内容移动到流中。不过，这里会对输入字符串进行复制。
+这段代码会逐行的将文本文件中的内容读取出来。然后，我们将字符串拷贝到一个`istringstream`对象中。我们可以根据输入流对象，创建一个`istring_iterator`迭代器，其能帮助我们查找子trie。这样，我们就不需要将字符串放入`vector`或`list`中了。上述代码中，有一段不必要的内存分配，可以使用移动方式，将line中的内容移动到iss中，避免不必要的内存分配。不过，`std::istringstream`没有提供构造函数，所以只能键`std::string`中的内容移动到流中。不过，这里会对输入字符串进行复制。
 
-当在trie中查询用户的输入时，我们使用了相同的策略，但是不使用输入文件流。我们使用std::cin作为替代。我们的例子就是这样做的，因为trie::subtrie对迭代器的操作，和trie::insert如出一辙。
+当在trie中查询用户的输入时，我们使用了相同的策略，但是不使用输入文件流。我们使用`std::cin`作为替代。我们的例子就是这样做的，因为`trie::subtrie`对迭代器的操作，和`trie::insert`如出一辙。
 
 ## There's more...
 
 这里有必要对每个trie节点添加统计变量。这样我们就能知道各种前缀被查询的频率。因此，我们就可以将程序的建议进行排序，当前的搜索引擎就是这样做的。智能手机触摸屏文本输入的建议，也可以通过这种方式实现。
 
-这个修改就留给读者做为作业了。
+这个修改就留给读者当作业了。 ：）
