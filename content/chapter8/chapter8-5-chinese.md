@@ -219,9 +219,9 @@ ostream& operator<<(ostream &os, const tuple<Ts...> &t)
 }
 ```
 
-首先我们定义了一个函数对象capt_tup。当我们调用capt_tup(foo, ar, whatever)时，其实际调用的是print_args(**os**, foo, bar, whatever)。这个函数只会做一件事，就是将可变列表中的参数输出到输出流对象os中。
+首先我们定义了一个函数对象`capt_tup`。当我们调用`capt_tup(foo, ar, whatever)`时，其实际调用的是print_args(**os**, foo, bar, whatever)。这个函数只会做一件事，就是将可变列表中的参数输出到输出流对象`os`中。
 
-之后，我们使用std::apply对元组t进行解包。如果这步看起来很复杂，那么可以看一下前一节，以了解std::apply的工作原理。
+之后，我们使用`std::apply`对元组t进行解包。如果这步看起来很复杂，那么可以看一下前一节，以了解`std::apply`的工作原理。
 
 **元素的zip函数**
 
@@ -244,10 +244,8 @@ auto zip(const T1 &a, const T2 &b)
 
 例程中，我们调用了apply(z, a)，也就相当于调用函数z(1, 2, 3)，其会构造一个哈数对象将这些参数捕获后进行返回，这样1，2，3就被放入参数包xs中了。这里会再次调用，apply(z(1, 2, 3), b)，会将'a', 'b', 'c'放入参数包ys中。
 
-Okay，现在xs = (1, 2, 3)，ys = ('a', 'b', 'c')，然后会发生什么呢？tuple_cat(make_tuple(xs, ys) ...)就会完成下图所描述的过程：
-
-
+Okay，现在`xs = (1, 2, 3)`，`ys = ('a', 'b', 'c')`，然后会发生什么呢？`tuple_cat(make_tuple(xs, ys) ...)`就会完成下图所描述的过程：
 
 ![](../../images/chapter8/8-5-1.png)
 
-首先，xs和ys中的成员将会被zip到一起，也就是交叉配对在一起。这个交叉配对发生在`  make_tuple(xs, ys)... `部分。这会将两个元组组成一个元组。为了获得一个大元组，我们使用了tuple_cat，我们通过对元组的级联获取一个大的元组，其包含了所有元组中的成员，并进行了交叉配对。
+首先，xs和ys中的成员将会被zip到一起，也就是交叉配对在一起。这个交叉配对发生在`  make_tuple(xs, ys)... `部分。这会将两个元组组成一个元组。为了获得一个大元组，我们使用了`tuple_cat`，我们通过对元组的级联获取一个大的元组，其包含了所有元组中的成员，并进行了交叉配对。
