@@ -46,6 +46,7 @@
            for (auto &n : copy){
                n += x;
            }
+           return copy;
        } else {
            return val + x;
        }
