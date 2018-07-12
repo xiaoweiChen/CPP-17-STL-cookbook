@@ -62,7 +62,7 @@
    std::vector<int> v{1, 2, 3};
    addable<std::vector<int>> {v}.add(10); // is std::vector<int> {11, 12, 13}
 
-   std::vector<int> sv{"a", "b", "c"};
+   std::vector<std::string> sv{"a", "b", "c"};
    addable<std::vector<std::string>> {sv}.add(std::string{"z"}); // is {"az", "bz", "cz"}
    ```
 
