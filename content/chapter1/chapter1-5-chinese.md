@@ -57,7 +57,7 @@
    ```c++
    addable<int> {1}.add(2); // is 3
    addable<float> {1.f}.add(2); // is 3.0
-   addable<std::string> {"aa"}.add（"bb"); // is "aabb"
+   addable<std::string> {"aa"}.add("bb"); // is "aabb"
 
    std::vector<int> v{1, 2, 3};
    addable<std::vector<int>> {v}.add(10); // is std::vector<int> {11, 12, 13}
