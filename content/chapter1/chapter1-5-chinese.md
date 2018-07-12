@@ -70,7 +70,7 @@
 
 ## How it works...
 
-新特性`constexpr-if`的工作机制与传统的`if-else`类似。不同点就在于前者在编译时进行判断，后者在运行时进行判断。所以，使用`constexpr-if`的代码在编译完成后，程序的这一部分其实就不会有分支存在。有种方式类似于`constexpr-if`，那就是采用`#if-#else`的预编译方式，进行宏替换，不过这种方式就会在代码的构成方面，不是那么优雅。组成`constexpr-if`的所有分支结构都是优雅地，没有使用分支在语义上不要求合法。
+新特性`constexpr-if`的工作机制与传统的`if-else`类似。不同点就在于前者在编译时进行判断，后者在运行时进行判断。所以，使用`constexpr-if`的代码在编译完成后，程序的这一部分其实就不会有分支存在。有种方式类似于`constexpr-if`，那就是`#if-#else`的预编译方式进行宏替换，不过这种方式在代码的构成方面不是那么优雅。组成`constexpr-if`的所有分支结构都是优雅地，没有使用分支在语义上不要求合法。
 
 为了区分是向`vector`的每个元素加上x，还是普通加法，我们使用`std::is_same`来进行判断。表达式`std::is_same<A, B>::value`会返回一个布尔值，当A和B为同样类型时，返回true，反之返回false。我们的例子中就写为`std::is_same<T, std::vector<U>>::value()`(`is_same_v = is_same<T, U>::value;`)，当返回为true时，且用户指定的T为`std::vector<X>`，之后试图调用add，其参数类型`U = X`。
 
@@ -79,7 +79,7 @@
 ```c++
 if constexpr(a){
     // do something
-} else ifconstexpr(b){
+} else if constexpr(b){
     // do something else
 } else {
     // do something completely different
@@ -123,6 +123,6 @@ public:
 
 对于第二个`add`函数，相同的判断条件，但是为反向。这样，在两个实现不能同时为真。
 
-当编译器看到具有相同名称的不同模板函数并不得不选择其中一个时，一个重要的原则就起作用了：替换失败不是错误([SFINAE](http://zh.cppreference.com/w/cpp/language/sfinae), **Substitution Failure is not Error**)。这个例子中，就意味着如果函数的返回值来源一个错误的模板表示，无法推断得出，这时编译器不会将这种情况视为错误(和`std::enable_if`中的条件为false时的状态一样)。这样编译器就会去找函数的另外的实现。这就是中技巧，也是它的工作原理。
+当编译器看到具有相同名称的不同模板函数并不得不选择其中一个时，一个重要的原则就起作用了：替换失败不是错误([SFINAE](http://zh.cppreference.com/w/cpp/language/sfinae), **Substitution Failure is not An  Error**)。这个例子中，就意味着如果函数的返回值来源一个错误的模板表示，无法推断得出，这时编译器不会将这种情况视为错误(和`std::enable_if`中的条件为false时的状态一样)。这样编译器就会去找函数的另外的实现。
 
-很麻烦是吧。C++17中实现起来就变得简单多了。
+很麻烦是吧，C++17中实现起来就变得简单多了。
