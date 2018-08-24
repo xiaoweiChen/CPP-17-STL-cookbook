@@ -1,12 +1,12 @@
 # 格式化输出
 
-很多情况下，我们仅对打印字符串和数字是不够的。数字通常都以十进制进行打印，而有时我们需要使用十六进制或八进制进行打印。并且在打印十六进制的时候，我们希望看到以`0x`为前缀的十六进制的数字，但有时候却不希望看到这个前缀。
+很多情况下，仅对打印字符串和数字是不够的。数字通常都以十进制进行打印，有时我们需要使用十六进制或八进制进行打印。并且在打印十六进制的时候，我们希望看到以`0x`为前缀的十六进制的数字，但有时却不希望看到这个前缀。
 
 当对浮点数进行打印的时候，也需要注意很多。以何种精度进行打印？要将数中的所有内容进行打印吗？或者是如何打印科学计数法样式的数？
 
-除了数值表示方面的问题外，我们还需要规范我们打印的格式。有时我们要以表格的方式进行打印，以确保打印出的数据的可读性。
+除了数值表示方面的问题外，还需要规范我们打印的格式。有时我们要以表格的方式进行打印，以确保打印出的数据的可读性。
 
-这所有的一切都与输出流有关。有时对输入流的解析也是十分重要的。本节中我们将来感受一下格式化输出。有些显示也会比较棘手，所以我们会对其进行一些解释。
+这所有的一切都与输出流有关，对输入流的解析也十分重要。本节中，我们将来感受一下格式化输出。有些显示也会比较麻烦，不过我们会对其进行解释。
 
 ## How to do it...
 
@@ -22,7 +22,7 @@
    using namespace std;
    ```
 
-2. 接下来，我们定义一个辅助函数，其会以不同的方式打印出一个数值。其能接受使用一种字符对宽度进行填充，其默认字符为空格：
+2. 接下来，定义一个辅助函数，其会以不同的方式打印出一个数值。其能接受使用一种字符对宽度进行填充，其默认字符为空格：
 
    ```c++
    void print_aligned_demo(int val,
@@ -42,7 +42,7 @@
    }
    ```
 
-4. 主函数中，我们使用已经实现的函数。首先，我们打印数字12345，其宽度为15。我们进行两次打印，不过第二次时，我们将填充字符设置为'_'：
+4. 主函数中，我们使用已经实现的函数。首先，打印数字12345，其宽度为15。我们进行两次打印，不过第二次时，将填充字符设置为'_'：
 
    ```c++
    int main()
@@ -51,7 +51,7 @@
        print_aligned_demo(123456, 15, '_');
    ```
 
-5. 随后，我们将打印`0x123abc`，并使用同样的宽度。不过，打印之前需要使用的是`std::hex`和`std::showbase`告诉输出流对象`cout`输出的格式，并且添加`0x`前缀，让其看起来是一下十六进制数：
+5. 随后，我们将打印`0x123abc`，并使用同样的宽度。不过，打印之前需要使用的是`std::hex`和`std::showbase`告诉输出流对象`cout`输出的格式，并且添加`0x`前缀，看起来是一个十六进制数：
 
    ```c++
    	cout << hex << showbase;
@@ -119,7 +119,7 @@
     }
     ```
 
-13. 编译并运行程序，我们就会得到如下的输出。前四个块都是有打印辅助函数完成，其使用`setw`对字符串进行了不同方向的填充。此外，我们也进行了数字的进制转换、布尔数表示和浮点数表示。通过使用，我们会对其更加熟悉：
+13. 编译并运行程序，我们就会得到如下的输出。前四个块都是有打印辅助函数完成，其使用`setw`对字符串进行了不同方向的填充。此外，我们也进行了数字的进制转换、布尔数表示和浮点数表示。通过实际操作，我们会对其更加熟悉：
 
     ```c++
     $ ./formatting
@@ -153,7 +153,7 @@
 
 ## How it works...
 
-所有这些看起来有些长，并且`<< foo << bar`的方式对于这块不会很了解的读者来说会感觉到困惑。因此，让我们来看一下格式化修饰符的表。其都是用`input_stream >> modifier `或` output_stream << modifier`来对之后的输入输出进行影响：
+例程看起来有些长，并且`<< foo << bar`的方式对于初级读者来说会感觉到困惑。因此，让我们来看一下格式化修饰符的表。其都是用`input_stream >> modifier `或` output_stream << modifier`来对之后的输入输出进行影响：
 
 | 符号                                                         | 描述                                                         |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
@@ -161,11 +161,11 @@
 | [showpoint / noshowpoint](http://zh.cppreference.com/w/cpp/io/manip/showpoint) | 启用或禁用浮点数字小数点的打印，即使没有小数位。             |
 | [fixed /scientific / hexfloat /defaultfloat](http://zh.cppreference.com/w/cpp/io/manip/fixed) | 数字可以以固定格式和科学表达式的方式进行打印。`fixed`和`scientific`代表了相应的打印模式。`hexfloat`将会同时激活这两种模式，用十六进制浮点表示法格式化浮点数。`defaultfloat`则会禁用这两种模式。 |
 | [showpos / noshowpos](http://zh.cppreference.com/w/cpp/io/manip/showpos) | 启用或禁用使用'+'来标志正浮点数。                            |
-| [setw(int n)](http://zh.cppreference.com/w/cpp/io/manip/setw) | 设置打印的宽度n。在读取的时候，这种设置会截断输入。当打印位数不够时，其会使用填充字符将输出填充到n个字符。 |
-| [setfill(char c)](http://zh.cppreference.com/w/cpp/io/manip/setfill) | 当我们`setw`时，会涉及填充字符的设置。`setfill`可以将填充字符设置为c。其默认填充字符为空格。 |
+| [setw(int n)](http://zh.cppreference.com/w/cpp/io/manip/setw) | 设置打印的宽度`n`。在读取的时候，这种设置会截断输入。当打印位数不够时，其会使用填充字符将输出填充到`n`个字符。 |
+| [setfill(char c)](http://zh.cppreference.com/w/cpp/io/manip/setfill) | 当我们`setw`时，会涉及填充字符的设置。`setfill`可以将填充字符设置为`c`。其默认填充字符为空格。 |
 | [internal / left / right](http://zh.cppreference.com/w/cpp/io/manip/left) | `left`和`right`控制填充的方向。`internal`会将填充字符放置在数字和符号之间，这对于十六进制打印和一些金融数字来说，十分有用。 |
 | [dec / hex / oct](http://zh.cppreference.com/w/cpp/io/manip/hex) | 整数打印的类型，十进制、十六进制和八进制。                   |
-| [setbase(int n)](http://zh.cppreference.com/w/cpp/io/manip/setbase) | 数字类型的同义函数，当n为10/16/8时，与dec / hex / oct完全相同。当传入0时，则会恢复默认输出，也就是十进制，或者使用数字的前缀对输入进行解析。 |
+| [setbase(int n)](http://zh.cppreference.com/w/cpp/io/manip/setbase) | 数字类型的同义函数，当`n`为`10/16/8`时，与`dec / hex / oct`完全相同。当传入0时，则会恢复默认输出，也就是十进制，或者使用数字的前缀对输入进行解析。 |
 | [quoted(string)](http://zh.cppreference.com/w/cpp/io/manip/quoted) | 将带有引号的字符串的引号去掉，对其实际字符进行打印。这里`string`的类型可以是`string`类的实例，也可以是一个C风格的字符串。 |
 | [boolalpha / noboolalpha](http://zh.cppreference.com/w/cpp/io/manip/boolalpha) | 打印布尔变量，是打印字符形式的，还是数字形式的。             |
 | [showbase / noshowbase](http://zh.cppreference.com/w/cpp/io/manip/showbase) | 启用或禁用基于前缀的数字解析。对于`hex`来说就是`0x`，对于`octal`来说就是`0`。 |
@@ -173,7 +173,7 @@
 
 看起来很多，想要熟悉这些控制符的最好方式，还是尽可能多的使用它们。
 
-在我们使用过程中会发现，其中有一些控制符是具有粘性的，而其他的却没有。这里的粘性是说其会持续影响接下来的所有输入或输出，直到对控制符进行重置。表格中没有粘性的为`setw`和`quoted`控制符。其只对下一次输入或输入有影响。了解这些是非常重要的，当我们要持续使用一个格式进行打印时，对于有粘性的控制符我们设置一次即可，其余的则在需要是进行设置。这些对输入解析同样适用，不过当错误的设置了控制符会得到错误的输入信息。
+在我们使用过程中会发现，其中有一些控制符具有粘性，另一些没有。这里的粘性是说其会持续影响接下来的所有输入或输出，直到对控制符进行重置。表格中没有粘性的为`setw`和`quoted`控制符。其只对下一次输入或输入有影响。了解这些非常重要，当我们要持续使用一个格式进行打印时，对于有粘性的控制符我们设置一次即可，其余的则在需要是进行设置。这些对输入解析同样适用，不过错误的设置了控制符则会得到错误的输入信息。
 
 下面的一些控制符我们没有使用它们，因为他们对于格式化没有任何影响，但出于完整性的考量我们在这里也将这些流状态控制符列出来：
 
@@ -182,8 +182,8 @@
 | [skipws / noskipws](http://zh.cppreference.com/w/cpp/io/manip/skipws) | 启用或禁用输入流对空格进行略过的特性。                     |
 | [unitbuf / nounitbuf](http://zh.cppreference.com/w/cpp/io/manip/unitbuf) | 启用或禁用在进行任何输出操作后，就立即对输出缓存进行刷新。 |
 | [ws](http://zh.cppreference.com/w/cpp/io/manip/ws)           | 从输入流舍弃前导空格。                                     |
-| [ends](http://zh.cppreference.com/w/cpp/io/manip/ends)       | 向流中输入一个终止符'\0'。                                 |
+| [ends](http://zh.cppreference.com/w/cpp/io/manip/ends)       | 向流中输入一个终止符`\0`。                                 |
 | [flush](http://zh.cppreference.com/w/cpp/io/manip/flush)     | 对输出缓存区进行刷新。                                     |
-| [endl](http://zh.cppreference.com/w/cpp/io/manip/endl)       | 向输出流中插入'\n'字符，并且刷新输出缓存区。               |
+| [endl](http://zh.cppreference.com/w/cpp/io/manip/endl)       | 向输出流中插入`\n`字符，并且刷新输出缓存区。               |
 
-这些控制符中，只有`skipws / noskipws和unitbuf / nounitbuf`是具有粘性的。
+这些控制符中，只有`skipws / noskipws`和`unitbuf / nounitbuf`是具有粘性的。
