@@ -24,13 +24,13 @@
    using namespace std; 
    ```
 
-2. 我们将使用`std::call_once`。为了对其进行使用，我们需要对`once_flag`进行实例化。在对指定函数使用`call_once`时，我们需要对所有线程进行同步：
+2. 我们将使用`std::call_once`。为了对其进行使用，需要对`once_flag`进行实例化。在对指定函数使用`call_once`时，需要对所有线程进行同步：
 
    ```c++
    once_flag callflag;
    ```
 
-3. 现在来定义一个只需要执行一次的函数。我们就让这个函数打印一个感叹号吧：
+3. 现在来定义一个只需要执行一次的函数，就让这个函数打印一个感叹号吧：
 
    ```c++
    static void once_print()
@@ -39,7 +39,7 @@
    }
    ```
 
-4. 再来定义所有线程都会运行的函数。首先我们要通过`std::call_once`调用`once_print`。`call_once`需要我们之前定义的变量`callflag`。其会被用来对线程进行安排：
+4. 再来定义所有线程都会运行的函数。首先，要通过`std::call_once`调用`once_print`。`call_once`需要我们之前定义的变量`callflag`。其会被用来对线程进行安排：
 
    ```c++
    static void print(size_t x)
