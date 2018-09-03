@@ -4,9 +4,9 @@
 
 # 编译和运行例程 
 
-本书的所有例子都在Linux和Mac OS进行开发和验证，我们使用GNU的C++编译器**g++**, 和LLVM的C++编译器 **clang++**。
+本书的所有例子都在Linux和Mac OS进行开发和验证，我们使用GNU的C++编译器**g++**，和LLVM的C++编译器 **clang++**。
 
- 在shell环境下可以使用如下的命令使用g++编译例程：
+ shell环境下可以使用如下的命令使用g++编译例程：
 
 `$ g++ -std c++lz —o recipe_app recipe_code.cpp `
 
