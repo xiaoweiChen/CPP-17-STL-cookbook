@@ -50,7 +50,7 @@
 
    ```c++
        auto deque_middle (next(begin(v),
-       	 static_cast<int>(v.size()) / 2)
+       	 static_cast<int>(v.size()) / 2));
    ```
 
 7. 现在，我们可以从输入流中一步步的拷贝整数到队列当中。另外，流的`end`包装迭代器为空的` std::istream_iterator<int> `。这个队列已经被包装到一个插入包装器中，也就是成为`std::insert_iterator`的一个实例，其指向队列中间位置的迭代器，我们用`deque_middle`表示:
