@@ -26,7 +26,8 @@
 2. 我们先实现一个简单的函数，其返回值是一个Lambda表达式。其需要传入一个容器，并且返回一个函数对象，这个函数对象会以引用的方式捕获容器。且函数对象本身接受传入一个整型参数。当向函数对象传入一个整型时，表达式将会把传入的整型，添加到捕获的容器尾部：
 
    ```c++
-   static auto consumer (auto &container){
+   template <typename C>
+   static auto consumer (C &container)
        return [&] (auto value) {
        	container.push_back(value);
        };
@@ -36,7 +37,8 @@
 3. 另一个辅助函数将会打印传入的容器中所有的内容：
 
    ```c++
-   static void print (const auto &c)
+   template <typename C>
+   static void print (const C &c)
    {
        for (auto i : c) {
        	std::cout << i << ", ";
