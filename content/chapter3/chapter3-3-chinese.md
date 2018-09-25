@@ -91,7 +91,7 @@
 
 **std::front_insert_iterator**
 
-`front_insert_iterator`和`back_insert_iterator`一样，不过`ront_insert_iterator`调用的是容器的`push_front`函数，也就是在所有元素前插入元素。这里需要注意的是，当对类似于`std::vector`的容器进行插入时，其已经存在的所有元素都要后移，从而空出位置来放插入元素，这会对性能造成一定程度的影响。
+`front_insert_iterator`和`back_insert_iterator`一样，不过`front_insert_iterator`调用的是容器的`push_front`函数，也就是在所有元素前插入元素。这里需要注意的是，当对类似于`std::vector`的容器进行插入时，其已经存在的所有元素都要后移，从而空出位置来放插入元素，这会对性能造成一定程度的影响。
 
 **std::insert_iterator**
 
