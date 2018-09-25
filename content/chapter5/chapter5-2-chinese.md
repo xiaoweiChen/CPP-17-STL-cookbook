@@ -105,10 +105,9 @@
         				   {3, 70}, {-10, 20} };
     ```
 
-12.  `std::sort`函数可以将比较函数作为第三个参数进行传入。让我们来使用它，并且传递一个比较函数。为了展示其实如何工作的，我们会对其第二个成员b进行比较。这样，我们将按`mystruct::b`的顺序进行排序，而非`mystruct::a`的顺序：
+12. `std::sort`函数可以将比较函数作为第三个参数进行传入。让我们来使用它，并且传递一个比较函数。为了展示其实如何工作的，我们会对其第二个成员b进行比较。这样，我们将按`mystruct::b`的顺序进行排序，而非`mystruct::a`的顺序：
 
     ```c++
-        mystruct::a :
         sort(begin(mv), end(mv),
         [] (const mystruct &lhs, const mystruct &rhs) {
             return lhs.b < rhs.b;
