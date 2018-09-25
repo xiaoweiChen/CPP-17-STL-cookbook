@@ -17,7 +17,8 @@
 2. 首先，让我们实现`multicall`函数，这个函数是本章的重点。这个函数可以接受任意数量的参数，并且返回一个Lambda表达式，这个Lambda表达式只接受一个参数。表达式可以通过这个参数调用所有已提供的函数。这样，我们可以定义`auto call_all (multicall(f, g, h))`函数对象，然后调用`call_all(123)`，从而达到同时调用`f(123); g(123); h(123); `的效果。这个函数看起来比较复杂，是因为我们需要一个语法技巧来展开参数包functions，并在`std::initializer_list`实例中包含一系列可调用的函数对象。
 
    ```c++
-   static auto multicall (auto ...functions)
+   template <typename ... Ts>
+   static auto multicall (Ts ...functions)
    {
        return [=](auto x) {
            (void)std::initializer_list<int>{
@@ -30,7 +31,8 @@
 3. 下一个辅助器能接受一个函数f和一个参数包`xs`。这里要表示的就是参数包中的每个参数都会传入f中运行。这种方式类似于`for_each(f, 1, 2, 3)`调用，从而会产生一系列调用——` f(1); f(2); f(3); `。本质上来说，这个函数使用同样的技巧来为函数展开参数包`xs`：
 
    ```c++
-   static auto for_each (auto f, auto ...xs) {
+   template <typename F, typename ... Ts>
+   static auto for_each (F f, Ts ...xs) {
        (void)std::initializer_list<int>{
       		((void)f(xs), 0)...
        };
