@@ -87,7 +87,7 @@ csignal fourier_transform(const csignal &s) {
    	const double div {back ? 1.0 : double(s.size())};
    ```
 
-6. `std::accumulate`很适合用来执行公式中的累加部分，我们将对一个范围内的数值使用`accumulate`。对于每个值，我们将逐步的进行单个相加。`std::accumulate`算法会调用一个二元函数。该函数的第一个参数为目前为止我们所累加的变量`sum`，第二个参数为范围内下一个要累加的值。我们会在信号`s`中对当前为止的值进行查找，并且会将其和复数因子`pol`相乘。然后，我们返回新的`sum`。这里的二元函数，使用Lambda表达式进行包装，因为我么将在每次`accumulate`的调用时，`j`变量的值是不同的。因为其是二维循环算法，所以内层Lambda做内部的循环，外城Lambda做外层的循环：
+6. `std::accumulate`很适合用来执行公式中的累加部分，我们将对一个范围内的数值使用`accumulate`。对于每个值，我们将逐步的进行单个相加。`std::accumulate`算法会调用一个二元函数。该函数的第一个参数为目前为止我们所累加的变量`sum`，第二个参数为范围内下一个要累加的值。我们会在信号`s`中对当前为止的值进行查找，并且会将其和复数因子`pol`相乘。然后，我们返回新的`sum`。这里的二元函数，使用Lambda表达式进行包装，因为我们将在每次`accumulate`的调用时，`j`变量的值是不同的。因为其是二维循环算法，所以内层Lambda做内部的循环，外层Lambda做外层的循环：
 
    ```c++
        auto sum_up ([=, &s] (size_t j) {
