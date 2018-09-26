@@ -88,10 +88,10 @@
 
    ```c++
    $ cat cities.txt| ./initialize_complex_objects
-   Braunschweig population=250000 lat=52.2689 lon=10.5268
-   Berlin population=4000000 lat=52.52 lon=13.405
-   New York City population=8406000 lat=40.7128 lon=-74.0059
-   Mexico City population=8851000 lat=19.4326 lon=-99.1332
+   Braunschweig    population = 250000 lat = 52.2689 lon = 10.5268
+   Berlin          population = 4000000 lat = 52.52 lon = 13.405
+   New York City   population = 8406000 lat = 40.7128 lon = -74.0059
+   Mexico City     population = 8851000 lat = 19.4326 lon = -99.1332
    ```
 
 ## How it works...
