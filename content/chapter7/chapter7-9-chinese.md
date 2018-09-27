@@ -18,6 +18,7 @@
    #include <algorithm>
    
    using namespace std;
+   using namespace std::string_literals;
    ```
 
 2. 让我们实现一个转换函数，其会将数字和字符串相对应。比如输入1，就会返回“one”；输入2，就会返回“two”，以此类推：
@@ -76,7 +77,7 @@
    	const vector<int> v {1, 2, 3, 4, 5};
    ```
 
-8. `ostream_iterator`需要一个模板参数，其能够表述哪种类型的变量我们能够进行打印。当使用`ostream_iterator<T>`时，其会使用` ostream&operator(ostream&, const T&)`进行打印。这也就是之前在`bork`类型中重载的输出流操作符。我们这次只对整型数字进行打印，所以使用`ostream_iterator<int> `。使用`cout`进行打印，并可以将其作为构造参数。我们使用循环对`vector`进行访问，并且对每个输出迭代器`i`进行解引用。这也就是在STL算法中流迭代器的用法：
+8. `ostream_iterator`需要一个模板参数，其能够表述哪种类型的变量我们能够进行打印。当使用`ostream_iterator<T>`时，其会使用` ostream& operator(ostream&, const T&)`进行打印。这也就是之前在`bork`类型中重载的输出流操作符。我们这次只对整型数字进行打印，所以使用`ostream_iterator<int> `。使用`cout`进行打印，并可以将其作为构造参数。我们使用循环对`vector`进行访问，并且对每个输出迭代器`i`进行解引用。这也就是在STL算法中流迭代器的用法：
 
    ```c++
    	ostream_iterator<int> oit {cout};
@@ -93,7 +94,7 @@
        cout << '\n';
    ```
 
-10. 为了将其进行打印，我们将值赋予一个输出流迭代器，这个方法很不错。这个方法可以和算法进行结合，其中最简单的方式就是`std::copy`。我们可以通过提供`begin`和`end`迭代器来代表输入的范围，在提供输出流迭代器作为输出迭代器。其将打印`vector`中的所有值。这里我们会将两个输出循环进行比较：
+10. 为了将其进行打印，我们将值赋予一个输出流迭代器。这个方法可以和算法进行结合，其中最简单的方式就是`std::copy`。我们可以通过提供`begin`和`end`迭代器来代表输入的范围，在提供输出流迭代器作为输出迭代器。其将打印`vector`中的所有值。这里我们会将两个输出循环进行比较：
 
    ```c++
    	copy(begin(v), end(v), oit);
@@ -137,7 +138,7 @@
 
 ## How it works...
 
-作为一个语法黑客，我们应该很了解`std::ostream_iterator`，其可以用来对数据进行打印，其在语法上为一个迭代器，对这个迭代器进行累加是无效的。对其进行解引用会返回一个代理对象，这些赋值操作符会将这些数字转发到输出流中。
+作为一个语法黑客，我们应知道`std::ostream_iterator`可以用来对数据进行打印，其在语法上为一个迭代器，对这个迭代器进行累加是无效的。对其进行解引用会返回一个代理对象，这些赋值操作符会将这些数字转发到输出流中。
 
 输出流迭代器会对类型T进行特化(`ostream_iterator<T> `)，对于所有类型的` ostream& operator<<(ostream&, const T&)`来说，都需要对其进行实现。
 
