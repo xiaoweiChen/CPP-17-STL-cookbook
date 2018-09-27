@@ -21,7 +21,7 @@ C++11之后，STL具有了很多用来测量和显示时间的新类型和函数
    using namespace std; 
    ```
 
-2. `chrono::duration`经常用来表示所用时间的长度，其为秒的倍数或小数，所有STL的持续都由整型类型进行特化。本节中，将使用`double`进行特化。本节之后，我们更多的会关注已经存在于STL的时间单位：
+2. `chrono::duration`经常用来表示所用时间的长度，其为秒的倍数或小数，所有STL的程序都由整型类型进行特化。本节中，将使用`double`进行特化。本节之后，我们更多的会关注已经存在于STL的时间单位：
 
    ```c++
    using seconds = chrono::duration<double>;
@@ -125,10 +125,10 @@ C++11之后，STL具有了很多用来测量和显示时间的新类型和函数
     Sorry, your input does not match. You may try again.
     Please type the word "C++17" as fast as you can.
     > C++17
-    Bravo. You did it in:
-    1.48 seconds.
-    1480.10 milliseconds.
-    1480099.00 microseconds.
+    Bravo. You did it in: 
+            2.82 seconds.
+         2817.95 milliseconds.
+      2817948.40 microseconds.
     ```
 
 ## How it works...
@@ -180,4 +180,4 @@ using microseconds = chrono::duration<double, ratio<1, 1000000>>;
 
 ## There's more...
 
-其他教程和书籍中，你可以会看到使用`duration_cast`的方式对时间进行转换。当我们具有一个时间间隔类`chrono::milliseconds`和要转换成的类型`chrono::hours`时，就需要转换为`duration_cast<chrono::hours>(milliseconds_value)`，因为这些时间单位都是整型。从一个细粒度的时间单位，转换成一个粗粒度的时间单位，将会带来时间精度的损失，这也是为什么我们使用`duration_cast`的原因。对于基于`double`和`float`的时间间隔类型不需要进行强制转换。
+其他教程和书籍中，你可以会看到使用`duration_cast`的方式对时间进行转换。当我们具有一个时间间隔类`chrono::milliseconds`和要转换成的类型`chrono::hours`时，就需要转换为`duration_cast<chrono::hours>(milliseconds_value)`，因为这些时间单位都是整型。从一个细粒度的时间单位，转换成一个粗粒度的时间单位，将会带来时间精度的损失，这也是为什么我们使用`duration_cast`的原因。基于`double`和`float`的时间间隔类型不需要进行强制转换。
