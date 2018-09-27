@@ -192,7 +192,7 @@ class basic_string;
 
 ` char_traits<char>`类包含`basic_string`所需要的算法。` char_traits<char>`可以进行字符串间的比较、查找和拷贝。
 
-`allocator<char>`类也是一个特化类，不过其任务时给字符串进行空间的分配和回收。这对于现在的我们来说并不重要，我们只使用其默认的方式就好。
+`allocator<char>`类也是一个特化类，不过其运行时给字符串进行空间的分配和回收。这对于现在的我们来说并不重要，我们只使用其默认的方式就好。
 
 当我们想要一个不同的字符串类型是，可以尝试对`basic_string`和`char_traits`类中提供的方法进行复用。我们实现了两个`char_traits`子类：`case_insentitive`和`lower_caser`类。我们可以将这两个字符串类替换标准`char_traits`类型。
 
