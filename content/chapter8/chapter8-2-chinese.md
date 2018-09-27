@@ -43,9 +43,9 @@ C++11之后，STL提供了`chrono`库，其让对时间的操作更加简单。
 4. 为了用很有优雅的方式表示很多天，我们定义属于`days`类型的字面值操作符。现在我们程序中写`3_days`就代表着3天：
 
    ```c++
-   constexpr days operator ""_days(unsigned long long h)
+   constexpr days operator ""_days(unsigned long long d)
    {
-   	return days{h};
+   	return days{d};
    }
    ```
 
