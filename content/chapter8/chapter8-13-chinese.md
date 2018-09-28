@@ -95,34 +95,34 @@
 10. 下一个随机引擎为`default_random_engine`，这种引擎的具体实现需要用实现来指定。其可能是后面任何一种随机引擎：
 
    ```c++
-   	cout << "ndefault_random_engine" << '\n';
+   	cout << "\ndefault_random_engine" << '\n';
    	histogram<default_random_engine>(partitions, samples);
    ```
 
 11. 然后，我们将尝试其他引擎：
 
     ```c++
-        cout << "nminstd_rand0" << '\n';
+        cout << "\nminstd_rand0" << '\n';
         histogram<minstd_rand0>(partitions, samples);
-        cout << "nminstd_rand" << '\n';
+        cout << "\nminstd_rand" << '\n';
         histogram<minstd_rand>(partitions, samples);
     
-        cout << "nmt19937" << '\n';
+        cout << "\nmt19937" << '\n';
         histogram<mt19937>(partitions, samples);
-        cout << "nmt19937_64" << '\n';
+        cout << "\nmt19937_64" << '\n';
         histogram<mt19937_64>(partitions, samples);
     
-        cout << "nranlux24_base" << '\n';
+        cout << "\nranlux24_base" << '\n';
         histogram<ranlux24_base>(partitions, samples);
-        cout << "nranlux48_base" << '\n';
+        cout << "\nranlux48_base" << '\n';
         histogram<ranlux48_base>(partitions, samples);
     
-        cout << "nranlux24" << '\n';
+        cout << "\nranlux24" << '\n';
         histogram<ranlux24>(partitions, samples);
-        cout << "nranlux48" << '\n';
+        cout << "\nranlux48" << '\n';
         histogram<ranlux48>(partitions, samples);
     
-        cout << "nknuth_b" << '\n';
+        cout << "\nknuth_b" << '\n';
         histogram<knuth_b>(partitions, samples);
     }
     ```
