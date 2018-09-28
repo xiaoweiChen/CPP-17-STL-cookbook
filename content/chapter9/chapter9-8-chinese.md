@@ -107,19 +107,19 @@ C++11之后，`std::async`能帮我们完成这项任务。我们将写一个简
 8. 编译并运行代码，就能得到如下的输出。我们使用一个简短的字符串的例子时，代码并不是真正的在并行，但这个例子中，我们能确保代码是并发的。另外，程序的结构与串行版本相比，并没有改变多少：
 
     ```c++
-      $ echo "foo bar baz foobazinga" | ./async
-      : 3
-      a: 4
-      b: 3
-      f: 2
-      g: 1
-      i: 1
-      n: 1
-      o: 4
-      r: 1
-      z: 2
-      Sorted string: " aaaabbbffginoooorzz"
-      Total vowels: 9
+    $ echo "foo bar baz foobazinga" | ./async
+     : 3
+    a: 4
+    b: 3
+    f: 2
+    g: 1
+    i: 1
+    n: 1
+    o: 4
+    r: 1
+    z: 2
+    Sorted string: "   aaaabbbffginoooorzz"
+    Total vowels: 9
     ```
 
 ## How it works...
