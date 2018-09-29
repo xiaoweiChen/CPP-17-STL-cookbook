@@ -65,7 +65,7 @@
    }
    ```
 
-7. 编译并运行代码，将会得到如下的输出。`current_path()`会返回我笔记本上的加目录，因为我在这个路径下执行的程序。相对路径`p`会通过 `absolute_path`，`system_complete`和`canonical`预先进行准备。我们能看到`absolute_path`和`system_complete`的结果都一样，因为我使用的是Mac系统。在使用Windows操作系统的机器上，`system_complete`将会前置一个`C:`，或者是工作路径的磁盘盘符：
+7. 编译并运行代码，将会得到如下的输出。`current_path()`会返回我笔记本上的HOME目录，因为我在这个路径下执行的程序。相对路径`p`会通过 `absolute_path`，`system_complete`和`canonical`预先进行准备。我们能看到`absolute_path`和`system_complete`的结果都一样，因为我使用的是Mac系统。在使用Windows操作系统的机器上，`system_complete`将会前置一个`C:`，或者是工作路径的磁盘盘符：
 
    ```c++
    $ ./canonical_filepath
