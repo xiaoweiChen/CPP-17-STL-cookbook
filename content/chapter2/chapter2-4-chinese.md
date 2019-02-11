@@ -74,7 +74,7 @@
    aaa foobar order random some without words yyy zzz
    ```
 
-##How it works...
+## How it works...
 
 程序整个过程都是围绕`insert_sorted`展开，这也就是本节所要说明的：对于任意的新字符串，通过计算其所在位置，然后进行插入，从而保证`vector`整体的排序性。不过，这里我们假设的情况是，在插入之前，`vector`已经排序。否则，这种方法无法工作。
 
