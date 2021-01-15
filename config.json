@@ -9,8 +9,26 @@
 	
 	"direction":"ltr",
 	
-	"plugins": [
-		"katex",
-		"ace"
-	]
+  "pluginsConfig": {
+    "fontSettings": {
+    "theme": "white",
+    "family": "msyh",
+    "size": 2
+    },
+    "plugins": [
+      "katex",
+      "ace"
+    ]
+  },
+  
+  "pdf": {
+    "pageNumbers": false,
+    "paperSize": "a4",
+    "margin": {
+      "right": 10,
+      "left": 10,
+      "top": 10,
+      "bottom": 20
+    }
+  }
 }
