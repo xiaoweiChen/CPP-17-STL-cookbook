@@ -95,4 +95,5 @@ void insert_sorted(C &v, const T &item)
 }
 ```
 
-当我们要将`std::vector`类型转换为其他类型时，需要注意的是并不是所有容器都支持`std::sort`。该函数所对应的算法需要容器为可随机访问容器，例如`std::list`就无法进行排序。
+当我们要将`std::vector`类型转换为其他类型时，需要注意的是并不是所有容器都支持`std::sort`。该函数所对应的算法需要容器为可随机访问容器，例如`std::list`就无法用`std::sort`进行排序。
+不过，`std::list`可以使用成员函数`sort`进行排序。
